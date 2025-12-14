@@ -220,11 +220,7 @@ const translations = {
         en: "All videos are verified and uploaded by the HIMALAYA DARSHAN social service organization Team — your trusted source for content.", 
         hi: "सभी वीडियो  हिमालय दर्शन एडमिन टीम द्वारा सत्यापित और अपलोड किए जाते हैं — आपका विश्वसनीय स्रोत।" 
     },
-        "team-title": {
-        en: "Meet the Minds Behind HIMALAYA DARSHAN<br>social service organization",
-        hi: "हिमालय दर्शन के पीछे के विचारशील लोग<br>सामाजिक सेवा संस्थान"
-    },
-   
+       
   
    
   // SECTION TITLE
@@ -398,7 +394,7 @@ const teamMembers = {
   },
   2: {
     img: "images\\mukul pant.jpg",
-    fullname: "Mr. Manoj Pant",
+    fullname: "Mr. Manoj  kumar Pant",
     role: " Secretary ",
     email: "mukulmanojpant@gmail.com",
     phone: "+91 9456172997",

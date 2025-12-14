@@ -413,7 +413,7 @@ nav.expanded .links a:hover {
      position: relative; /* Background */
       background: linear-gradient(135deg, rgba(26, 60, 43, 0.4) 0%,
        rgba(15, 36, 26, 0.4) 50%, rgba(15, 36, 26, 0.4) 100%), 
-       url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=cover&w=1950&q=85');
+       url("images\\moutain.avif");
    background-blend-mode: overlay; /* keeps the overlay effect but makes image visible */
        background-size: cover; 
        background-position: center;
