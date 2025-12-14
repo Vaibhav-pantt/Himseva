@@ -237,7 +237,7 @@ const translations = {
   "mukul-role": { en: "Secretary", hi: "सचिव" },
 
   "pooja-name": { en: "POOJA PANDEY", hi: "पूजा पांडे " },
-  "pooja-role": { en: "Kosa President", hi: "कोसा अध्यक्ष" },
+  "pooja-role": { en: "Treasurer", hi: "कोसा अध्यक्ष" },
 
   // BRAND
   "brand-heading": { en: "HIMALAYA DARSHAN", hi: "हिमालय दर्शन" },
