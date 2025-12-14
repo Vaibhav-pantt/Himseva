@@ -100,42 +100,7 @@ transition: width 0.2s ease;
 .links a:focus::after {
   width: 100%;
 }
-.user-area {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem; /* more space between username and button */
-}
 
-.user-area span {
-  font-weight: 600;
-  color: #1a1a1a; /* dark, professional text */
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.user-area span:hover {
-  color: #007bff; /* professional blue highlight on hover */
-}
-
-.user-area button {
-  padding: 12px 24px; /* bigger, more clickable */
-  background: linear-gradient(135deg, #007bff, #00bcd4); /* professional blue-teal gradient */
-  color: #fff; /* white text for contrast */
-  border: none;
-  border-radius: 10px; /* rounded but professional */
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1rem;
-  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.35); /* subtle shadow */
-  transition: all 0.3s ease;
-}
-
-.user-area button:hover,
-.user-area button:focus {
-  transform: translateY(-2px) scale(1.03); /* slight zoom effect */
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5); /* stronger hover shadow */
-  background: linear-gradient(135deg, #00bcd4, #007bff); /* hover gradient flip */
-}
 
 /* Hamburger button */
   /* ========================= */
@@ -190,10 +155,7 @@ transition: width 0.2s ease;
     display: flex;
   }
 
-  /* Hide desktop elements */
-  .user-area {
-    display: none !important;
-  }
+
 
   .links {
     display: none;
