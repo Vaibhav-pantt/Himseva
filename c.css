@@ -971,30 +971,7 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
    MOBILE RESPONSIVE
 ========================= */
 @media (max-width: 1024px) {
-  .events-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .section-title {
-    font-size: 2.2rem;
-  }
-
-  .events-track {
-    padding-left: 1rem;
-  }
-
-  .event-card {
-    flex: 0 0 200px;  /* slightly smaller cards */
-    padding: 1rem 0.8rem;
-  }
-
-  .event-card img {
-    height: 140px;
-  }
-}
-
-@media (max-width: 768px) {
-
+  
   /* Title */
   .section-title {
     font-size: 1.7rem;
@@ -1002,11 +979,12 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
   }
 
   /* Slider container */
-  .events-carousel {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+.events-carousel {
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 
   /* Track */
   .events-track {
@@ -1051,28 +1029,136 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
   .event-card:hover {
     transform: none;
   }
+ 
+}
+
+@media (max-width: 768px) {
+
+  /* Title */
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Slider container */
+.events-carousel {
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+
+  /* Track */
+  .events-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    animation: none;
+    width: auto;
+  }
+
+  /* ONE CARD – REDUCED SIZE */
+   .event-card {
+    flex: 0 0 75vw;     /* SMALLER width */
+    max-width: 75vw;
+    min-height: 52vh;  /* SMALLER height */
+    padding: 1rem;
+    scroll-snap-align: center;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Image */
+  .event-card img {
+    width: 100%;
+    height: 45%;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Text */
+  .event-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .event-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Touch devices – no hover jump */
+  .event-card:hover {
+    transform: none;
+  }
 }
 
 
 @media (max-width: 480px) {
+
+
+  /* Title */
   .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
   }
 
-  .event-card {
-    flex: 0 0 140px; /* smallest card width */
-    padding: 0.6rem 0.5rem;
+  /* Carousel = SCROLLER */
+  .events-carousel {
+    display: block;              /* FIX */
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* Track = FLEX ROW */
+  .events-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    animation: none !important;  /* STOP auto-scroll */
+    width: max-content;
+  }
+
+  /* ONE CARD AT A TIME */
+    .event-card {
+    flex: 0 0 75vw;     /* SMALLER width */
+    max-width: 75vw;
+    min-height: 52vh;  /* SMALLER height */
+    padding: 1rem;
+    scroll-snap-align: center;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Image */
   .event-card img {
-    height: 100px;
+    width: 100%;
+    height: 45%;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
   }
 
-  .events-section::before {
-    height: 1px; /* thinner shimmer line on mobile */
+  /* Text */
+  .event-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .event-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Disable hover effects on touch */
+  .event-card:hover {
+    transform: none;
   }
 }
+
+
 
 /* Profile section with background image */
 #profile.profile {

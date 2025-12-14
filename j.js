@@ -488,3 +488,36 @@ window.addEventListener("keydown", (e) => {
 })();
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector(".events-carousel");
+  const cards = document.querySelectorAll(".event-card");
+
+  if (!carousel || cards.length === 0) return;
+
+  let index = 0;
+  let autoSlide;
+
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      index = (index + 1) % cards.length;
+      carousel.scrollTo({
+        left: cards[index].offsetLeft,
+        behavior: "smooth"
+      });
+    }, 4000); // ⏱ change card every 3 seconds
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  // Run ONLY on mobile
+  if (window.innerWidth <= 780) {
+    startAutoSlide();
+
+    // Pause when user touches
+    carousel.addEventListener("touchstart", stopAutoSlide);
+    carousel.addEventListener("touchend", startAutoSlide);
+  }
+});
+
