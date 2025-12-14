@@ -403,8 +403,8 @@ const teamMembers = {
     img: "OIP (2).jpeg",
     fullname: "Mr. Manoj Pant",
     role: " Secretary ",
-    email: "mukul.pant@example.com",
-    phone: "+91 99999 00002",
+    email: "mukulmanojpant@gmail.com",
+    phone: "+91 9456172997",
     location: "Almora, Uttarakhand",
     education: "Master of Science (Msc)",
     facebook: "#",
@@ -480,7 +480,6 @@ window.addEventListener("keydown", (e) => {
   revealOnScroll();
 })();
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".events-carousel");
   const cards = document.querySelectorAll(".event-card");
@@ -497,20 +496,23 @@ document.addEventListener("DOMContentLoaded", () => {
         left: cards[index].offsetLeft,
         behavior: "smooth"
       });
-    }, 4000); // ⏱ change card every 3 seconds
+    }, 4000); // Change card every 4 seconds
   }
 
   function stopAutoSlide() {
     clearInterval(autoSlide);
   }
 
-  // Run ONLY on mobile
-  if (window.innerWidth <= 780) {
-    startAutoSlide();
+  // Start auto slide on mobile or desktop
+  startAutoSlide();
 
-    // Pause when user touches
-    carousel.addEventListener("touchstart", stopAutoSlide);
-    carousel.addEventListener("touchend", startAutoSlide);
-  }
+  // Pause on hover (desktop)
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", stopAutoSlide);
+    card.addEventListener("mouseleave", startAutoSlide);
+  });
+
+  // Pause on touch (mobile)
+  carousel.addEventListener("touchstart", stopAutoSlide);
+  carousel.addEventListener("touchend", startAutoSlide);
 });
-

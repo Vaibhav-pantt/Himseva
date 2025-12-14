@@ -18,7 +18,41 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ------------------------------
+   NAVBAR (Apple Glass)
+--------------------------------*/
+.navbar {
+    width: 100%;
+    padding: 14px 28px;
+    background: rgba(245,245,247,0.75);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
 
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.25s;
+}
+
+.navbar ul li a:hover {
+    opacity: 0.5;
+}
 
   /* HEADER */
    .header {
@@ -52,15 +86,12 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
 
-  .slide {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-radius: 15px;
-    transition: opacity 0.8s ease-in-out;
-  }
+ .slide {
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.8s ease-in-out;
+}
 
   .slide.active {
     opacity: 1;
@@ -68,12 +99,14 @@ body {
     display: block !important;
   }
 
-  .slide img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 15px;
-  }
+.slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  background: #000;
+  border-radius: 15px;
+}
+
 
   /* CAPTION */
   .caption {
@@ -112,51 +145,94 @@ body {
   .next { right: 15px; }
 
   /* DOTS */
-  .dots {
-    text-align: center;
-    padding: 12px 0;
-  }
+ .dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+}
 
-  .dot {
-    height: 12px;
-    width: 12px;
-    margin: 0 4px;
-    display: inline-block;
-    background: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+/* Default dot */
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
-  .dot.active {
-    background: #4a7dff;
-  }
+/* Hover effect */
+.dot:hover {
+  transform: scale(1.25);
+  background: rgba(74, 125, 255, 0.6);
+}
+
+/* Active dot */
+.dot.active {
+  width: 26px;                 /* pill style */
+  border-radius: 20px;
+  background: linear-gradient(90deg, #4a7dff, #6fa3ff);
+  box-shadow: 0 4px 12px rgba(74, 125, 255, 0.5);
+  transform: scale(1);
+}
+
+
 
   /* INFO CARD */
   .info {
     max-width: 900px;
     margin: 30px auto;
     padding: 25px;
-    background: white;
+    background: rgb(226, 223, 223);
     border-radius: 15px;
     box-shadow: 0 4px 18px rgba(0,0,0,0.12);
   }
 
   .info h2 {
     margin-top: 0;
-    color: #4a7dff;
+    background: linear-gradient(90deg, #c49e9ebc, #046da67e);
   }
 
-  .info p {
-    line-height: 1.7;
-    font-size: 16px;
+.info p {
+  line-height: 1.75;                /* Golden ratio for readability (was 1.9) */
+  font-size: clamp(16px, 2.25vw, 17px); /* Responsive sizing */
+  font-weight: 450;                 /* Slightly firmer for modern screens (was 400) */
+  color: #1d1d1f;                   /* Retained Apple neutral */
+  letter-spacing: 0.0125em;         /* More precise, scalable spacing (was 0.15px) */
+  margin-bottom: 1.125rem;          /* Scalable rem units (was 18px) */
+  text-align: justify;              /* Retained editorial look */
+  max-width: 65ch;                  /* Ideal line length in characters (was 760px) */
+  hyphens: auto;                    /* Prevents awkward gaps in justified text */
+  text-rendering: optimizeLegibility; /* Crisp fonts at all sizes */
+  font-feature-settings: 'kern' 1, 'liga' 1; /* Typography polish */
+
+  /* Accessibility & perf */
+  @supports (font-variation-settings: 'wght' 400) {
+    font-variation-settings: 'wght' 450;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/*.info p::first-letter {
+  font-size: 22px;
+  font-weight: 600;
+  color: #046da6;
+}
 
   /* TIMELINE */
   .timeline {
     max-width: 900px;
     margin: 40px auto;
     border-left: 6px solid;
-    border-image: linear-gradient(to bottom, #4a7dff, #766bff) 1;
+    border-image: linear-gradient(to bottom, #3e72f5, #161348) 1;
     padding-left: 25px;
   }
 
@@ -215,10 +291,34 @@ body {
   }
 
   /* MOBILE FIX */
-  @media(max-width: 600px) {
-    .slide img {
-      height: 250px;
-    }
+  @media(max-width: 780px) {
+      .navbar {
+    padding: 12px 16px;
+  }
+
+  /* Stack or wrap menu items */
+  .navbar ul {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .navbar ul li a {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  /* Optional soft hover for touch */
+  .navbar ul li a:active {
+    background: rgba(0,0,0,0.06);
+  }
+
+   .slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
     .header {
       font-size: 28px;
       padding: 30px 15px 20px;
@@ -234,34 +334,66 @@ body {
 
 <body>
 
-<!-- PARALLAX HEADER -->
-<div class="header">
-    Community Cleanliness Drive – HIMSEVA
+
+  <div class="navbar">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Team</a></li>
+    </ul>
 </div>
 
-<!-- IMAGE SLIDER -->
+
+<div class="header">
+   Motivation Lecture for 6th-12th Graders – HIMSEVA
+
+
+</div>
+
+
 
 <div class="slider-container">
   <div class="slider">
     <div class="slide active">
-      <img src="OIP (1).jpeg" alt="Event 1">
+      <img src="images\MT image  8 .jpg" alt="Event 1">
       <div class="caption">Volunteers at the cleaning drive</div>
     </div>
     <div class="slide">
-      <img src="OIP (2).jpeg" alt="Event 2">
+      <img src="images\MT image 7.jpg" alt="Event 2">
       <div class="caption">Community awareness activity</div>
     </div>
     <div class="slide">
-      <img src="oip3.jpg" alt="Event 3">
+      <img src="images\MT image 6.jpg" alt="Event 3">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 5.jpg" alt="Event 4">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 4.jpg" alt="Event 5">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 3.jpg" alt="Event 6">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 2.jpg" alt="Event 7">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 1.jpg" alt="Event 8">
       <div class="caption">Group photo after the event</div>
     </div>
   </div>
 
-  <!-- Navigation arrows -->
+
   <span class="prev">&#10094;</span>
   <span class="next">&#10095;</span>
 
-  <!-- Dots -->
+  
   <div class="dots">
     <span class="dot active"></span>
     <span class="dot"></span>
@@ -271,125 +403,153 @@ body {
 
 
 
-<!-- EVENT DETAILS -->
 <div class="info">
     <h2>Event Overview</h2>
+
     <p>
-        HIMSEVA organized a large-scale Community Cleanliness Drive with the aim of 
-        spreading awareness about hygiene and environmental responsibility.
-        With the participation of over 60 volunteers, the event focused on 
-        cleaning public spaces, roadside areas, and educating locals about 
-        waste management and cleanliness habits.
-    </p>
+  <strong>Dated:</strong> 11 December 2025<br>
+  <strong>Place:</strong> Lakshmi Shiksha Niketan, Danya, Almora
+</p>
+   <p>
+ Himalaya Darshan Social Service Organization organized a motivational lecture for students of Classes 6 to 12, focusing on personal growth, improving concentration, understanding the true purpose of education, and recognizing individual responsibilities toward culture and society.
+
+The session aimed to inspire students to build a positive mindset, develop discipline, and contribute meaningfully to their community.
+</p>
+
+<p>
+  The session encouraged students to understand how to improve their lives,
+  develop focus, set meaningful goals, and contribute positively to the nation
+  and community.
+</p>
 </div>
 
-<!-- TIMELINE -->
+
 <div class="timeline">
     <div class="timeline-item">
         <h3>📍 9:00 AM – Event Start</h3>
-        <p>Volunteers gathered at the central ground and received instructions, 
-        safety gear, and cleaning equipment.</p>
+        <p>Students and teachers assembled for the session and attentively participated in the motivational lecture.
+</p>
     </div>
 
     <div class="timeline-item">
-        <h3>🧹 11:00 AM – Cleaning Activities</h3>
-        <p>Groups moved into assigned areas to clean markets, roadsides, and public 
-        spaces while engaging with locals.</p>
+        <h3> 11:00 AM –  🎤 Motivational Session</h3>
+        <p>Students were guided on life skills, discipline, concentration techniques,
+      educational values, and social responsibility.</p>
     </div>
 
     <div class="timeline-item">
-        <h3>🤝 2:00 PM – Awareness Drive</h3>
-        <p>Volunteers conducted a small awareness rally and distributed educational 
-        leaflets on hygiene and waste disposal.</p>
+        <h3> 2:00 PM –   🏆 Prize Distribution</h3>
+        <p>Students who demonstrated outstanding communication skills during the
+      lecture were recognized and awarded prizes.</p>
     </div>
 </div>
 
-<!-- BACK BUTTON -->
 <a href="index.html#hero-title" class="back-btn">&#8592; Back to Home</a>
 <a href="eventsecnddesinge.html" class="back-btn">&#8592; Back to next</a>
 
 
 
 <script>
-
-
-    let startX = 0;
-let endX = 0;
-
+  // ===== ELEMENTS =====
 const sliderContainer = document.querySelector(".slider-container");
-
-sliderContainer.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-sliderContainer.addEventListener("touchend", e => {
-  endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) { // swipe left
-    nextSlide();
-    resetInterval();
-  } else if (endX - startX > 50) { // swipe right
-    prevSlide();
-    resetInterval();
-  }
-});
-
 const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 
+// ===== STATE =====
 let current = 0;
-let slideInterval = setInterval(nextSlide, 4000);
+let slideInterval;
 
-// Show current slide
+// ===== CREATE DOTS DYNAMICALLY =====
+const dotsContainer = document.createElement("div");
+dotsContainer.className = "dots";
+
+slides.forEach((_, index) => {
+  const dot = document.createElement("span");
+  dot.className = "dot";
+  if (index === 0) dot.classList.add("active");
+
+  dot.addEventListener("click", () => {
+    showSlide(index);
+    resetInterval();
+  });
+
+  dotsContainer.appendChild(dot);
+});
+
+sliderContainer.appendChild(dotsContainer);
+const dots = document.querySelectorAll(".dot");
+
+// ===== SHOW SLIDE =====
 function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  current = index;
+
   slides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    dots[i].classList.remove("active");
-    if(i === index){
-      slide.classList.add("active");
-      dots[i].classList.add("active");
-    }
+    slide.classList.toggle("active", i === current);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === current);
   });
 }
 
-// Next slide
+// ===== CONTROLS =====
 function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
+  showSlide(current + 1);
 }
 
-// Previous slide
 function prevSlide() {
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
+  showSlide(current - 1);
 }
 
-// Event listeners
+// ===== AUTO SLIDE =====
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+// ===== ARROWS =====
 next.addEventListener("click", () => {
   nextSlide();
   resetInterval();
 });
+
 prev.addEventListener("click", () => {
   prevSlide();
   resetInterval();
 });
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    current = i;
-    showSlide(current);
-    resetInterval();
-  });
+
+// ===== PAUSE ON HOVER =====
+sliderContainer.addEventListener("mouseenter", () =>
+  clearInterval(slideInterval)
+);
+
+sliderContainer.addEventListener("mouseleave", () =>
+  slideInterval = setInterval(nextSlide, 3000)
+);
+
+// ===== TOUCH / SWIPE =====
+let startX = 0;
+
+sliderContainer.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+  clearInterval(slideInterval);
 });
 
-// Pause on hover
-document.querySelector(".slider-container").addEventListener("mouseenter", () => clearInterval(slideInterval));
-document.querySelector(".slider-container").addEventListener("mouseleave", () => slideInterval = setInterval(nextSlide, 4000));
+sliderContainer.addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
 
-function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 4000);
-}
+  if (startX - endX > 50) nextSlide();
+  else if (endX - startX > 50) prevSlide();
+
+  slideInterval = setInterval(nextSlide, 3000);
+});
+
+// ===== INIT =====
+showSlide(current);
+slideInterval = setInterval(nextSlide, 3000);
 
 
   </script>

@@ -581,39 +581,73 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
 
 /* Buttons */ .button-group { display: flex; gap: 15px; } .explore-btn { padding: 12px 30px; background-color: #1d1d1f; color: #fff; border: none; border-radius: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; } .explore-btn:hover { background-color: #333; } .arrow-btn { padding: 12px 20px; background-color: #e1e1e4; color: #1d1d1f; border-radius: 14px; font-size: 18px; cursor: pointer; transition: all 0.3s ease; } .arrow-btn:hover { background-color: #d3d3d6; }
 
+/* Hero Image Area */
 .hero-image-area {
   flex: 1;
   min-width: 300px;
   display: flex;
   justify-content: center;
+  align-items: center;   /* vertically center the image */
   margin-top: 20px;
+  position: relative;
 }
 
+/* Product Image Container */
 .product-image {
   width: 360px;
   height: 480px;
   border-radius: 28px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(18px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
+/* Actual Image inside container */
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
+/* Overlay Text */
 .product-text-overlay {
+  position: relative;           /* stays above the image */
+  z-index: 2;
   text-align: center;
-  color: #d4a77e;
+  color: rgb(241, 241, 230);  /* subtle but readable */
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  padding: 10px;
-  transition: transform 0.3s ease;
+  font-size: 1.5rem;            /* slightly larger for impact */
+  font-weight: 700;             /* bolder for emphasis */
+  line-height: 1.4;             /* better spacing between lines */
+  padding: 12px 15px;           /* slightly more padding */
+  border-radius: 12px;          /* smooth corners */
+  backdrop-filter: blur(1px);   /* soft glass effect */
+  background: rgba(0, 0, 0, 0.25); /* subtle overlay for readability */
+  box-shadow: 0 8px 20px rgba(237, 235, 235, 0);
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Overlay hover effect */
 .product-text-overlay:hover {
   transform: translateY(-5px);
 }
+
 
 /* =====================
    RESPONSIVE
@@ -624,12 +658,12 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
     padding: 60px 35px;
   }
   .hero-title {
-    font-size: 2.6rem;
+    font-size: 1.6rem;
     text-align: center;
   }
-  
+
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 2rem;
     text-align: center;
   }
   .hero-image-area {
@@ -686,7 +720,7 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     text-align: center;
     order: 0;
   }
@@ -1849,6 +1883,61 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+.value a {
+  color: #046da6;                   /* Primary accent */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: inline-block;            /* Enables transform without jumps */
+  transform: translateX(0);         /* Explicit baseline */
+  outline: none;
+  line-height: 1.5;                 /* Consistent baseline */
+}
+
+.value a:hover,
+.value a:focus-visible {            /* focus-visible > focus for accessibility */
+  color: #00158d;
+  transform: translateX(2px);
+}
+
+.value a:focus-visible {
+  outline: 2px solid #046da6;
+  outline-offset: 2px;
+}
+
+.value a:active {
+  transform: translateX(4px) scale(0.98); /* Press feedback */
+}
+
+/* Smooth underline animation (GPU accelerated) */
+.value a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -2px 0;             /* Modern inset shorthand */
+  width: 0;
+  height: 1.5px;                    /* Slightly thinner */
+  background: currentColor;         /* Adapts to color changes */
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;    /* Precise origin */
+  will-change: width;               /* Optimize for animation */
+}
+
+.value a:hover::after,
+.value a:focus-visible::after {
+  width: 100%;
+}
+
+/* Accessibility & perf */
+@media (prefers-reduced-motion: reduce) {
+  .value a,
+  .value a::after {
+    transition: color 0.15s ease;
+    transform: none !important;
+  }
+}
+
 
 .user-card {
   background-color: rgba(255, 255, 255, 0.9); /* White translucent background */
@@ -2008,6 +2097,7 @@ h3 {
 .more-info-btn.loading {
   pointer-events: none;
 }
+
 
 .more-info-btn.loading::after {
   background: rgba(232, 240, 229, 0.4);
@@ -2413,4 +2503,15 @@ footer p span {
   50% { transform: scale(1.2) rotate(-8deg); }
 }
 
+#modal-email {
+  color: #070809;             /* Primary accent color */
+  text-decoration: none;      /* Remove underline */
+  font-weight: 500;           /* Slightly bold */
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+#modal-email:hover {
+  color: #0a9ed4;             /* Darker hover color */
+  text-decoration: underline; /* Underline on hover */
+}
 
