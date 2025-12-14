@@ -653,7 +653,64 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
   margin-bottom: 30px;
 }
 
-/* Buttons */ .button-group { display: flex; gap: 15px; } .explore-btn { padding: 12px 30px; background-color: #1d1d1f; color: #fff; border: none; border-radius: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; } .explore-btn:hover { background-color: #333; } .arrow-btn { padding: 12px 20px; background-color: #e1e1e4; color: #1d1d1f; border-radius: 14px; font-size: 18px; cursor: pointer; transition: all 0.3s ease; } .arrow-btn:hover { background-color: #d3d3d6; }
+.hero-date {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: #046da6;
+  padding: 6px 14px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+
+/* Buttons */ 
+
+/* Button Group Container */
+.button-group {
+  display: flex;
+  gap: 15px;                     /* horizontal spacing for desktop */
+  flex-wrap: wrap;                /* wrap buttons on small screens */
+  justify-content: center;        /* center on screen */
+  margin-top: 15px;
+}
+
+/* Buttons */
+.button-group .explore-btn,
+.button-group .arrow-btn {
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Explore Button */
+.button-group .explore-btn {
+  background-color: #1d1d1f;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 1rem;
+}
+.button-group .explore-btn:hover {
+  background-color: #333;
+}
+
+/* Arrow Button */
+.button-group .arrow-btn {
+  background-color: #e1e1e4;
+  color: #1d1d1f;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+}
+.button-group .arrow-btn:hover {
+  background-color: #d3d3d6;
+}
+
+
 
 /* Hero Image Area */
 .hero-image-area {
@@ -759,27 +816,22 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
     margin-top: 0;
     margin-bottom: 20px; /* spacing below image */
   }
-
- /* BUTTON GROUP RESPONSIVE FOR MOBILE */
-.button-group {
-  display: flex;
-  flex-direction: column;       /* stack buttons vertically */
-  align-items: center;          /* center buttons horizontally */
-  gap: 12px;                    /* spacing between buttons */
-  width: 100%;                  /* take full width of container */
-  margin-top: 15px;             /* spacing above group */
-}
-
-.button-group .explore-btn,
-.button-group .arrow-btn {
-  width: 90%;                   /* almost full width for buttons */
-  max-width: 250px;             /* cap width for large phones */
-  padding: 12px 0;              /* vertical padding for touch */
-  text-align: center;           /* center text */
-  border-radius: 14px;          /* rounded buttons */
-  font-size: 1rem;              /* readable font size */
-  transition: background 0.3s ease;
-}
+   .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.75rem, 3vw, 1rem);
+    width: min(90vw, 280px);
+    margin-inline: auto;
+    order: 2; /* Ensure buttons come after image */
+  }
+  
+  .button-group .explore-btn,
+  .button-group .arrow-btn {
+    width: 100%;           /* Full width on mobile */
+    max-width: 280px;
+    min-width: unset;      /* Remove desktop constraints */
+    padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  }
 
 
   .product-image {
