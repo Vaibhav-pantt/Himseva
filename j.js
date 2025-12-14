@@ -400,8 +400,7 @@ const teamMembers = {
     phone: "+91 9456172997",
     location: "Almora, Uttarakhand",
     education: "Master of Science (Msc)",
-    facebook: "#",
-    instagram: "#",
+    facebook: "",
     linkedin: "https://linkedin.com/in/mukulpant",
    
   },
@@ -509,3 +508,37 @@ document.addEventListener("DOMContentLoaded", () => {
   carousel.addEventListener("touchstart", stopAutoSlide);
   carousel.addEventListener("touchend", startAutoSlide);
 });
+
+  const phoneLink = document.getElementById("phoneLink");
+  const phoneNumber = "+919149677383";
+
+  let pressTimer;
+  let longPress = false;
+
+  // LONG PRESS (copy)
+  phoneLink.addEventListener("mousedown", startPress);
+  phoneLink.addEventListener("touchstart", startPress);
+
+  function startPress(e) {
+    longPress = false;
+
+    pressTimer = setTimeout(() => {
+      longPress = true;
+      navigator.clipboard.writeText(phoneNumber).then(() => {
+        console.log("Copied!");
+
+      });
+    }, 1000); // 1 second hold
+  }
+
+  // RELEASE
+  phoneLink.addEventListener("mouseup", cancelPress);
+  phoneLink.addEventListener("mouseleave", cancelPress);
+  phoneLink.addEventListener("touchend", cancelPress);
+
+  function cancelPress(e) {
+    clearTimeout(pressTimer);
+    if (longPress) {
+      e.preventDefault(); // stop call if long press
+    }
+  }
