@@ -180,19 +180,19 @@ const translations = {
   // Hero
   "logo-3d-title": { en: "HIMALAY DARSHAN", hi: "हिमालय दर्शन" },
   "subtitle": { en: "Social Service Organization", hi: "सामाजिक सेवा संस्थान" },
-  "logo-subtitle": { en: "Strength • Resilience • Hope", hi: "सेवा • समर्पण• आशा" },
+  "logo-subtitle": { en: "Strength • Resilience • Hope", hi: "सेवा • समर्पण• विश्वास" },
 
   // About
-  "about-title": { en: "About Himalay Darshan", hi: "हिमालय दर्शन सामाजिक सेवा संस्थान " },
+  "about-title": { en: "About Himalay Darshan", hi: "हिमालय दर्शन सामाजिक सेवा संस्थान के उद्देश्य " },
   "about-p1": { 
-    en: "  “Founded on September 30, 2025, Himalay Darshan Social Service Organization  works to promote Indian culture, human values, health, education, and the   holistic development of underprivileged women and children, while also  focusing on environmental and soil conservation, disaster awareness, preparedness, and relief efforts. Through positive initiatives and meaningful programs, it inspires action, drives change, addresses social challenges, and advances human welfare",
-    hi: "30 सितंबर 2025 को स्थापित हिमालय दर्शन सामाजिक सेवा संस्थान समाज में भारतीय संस्कृति, मानव मूल्य, स्वास्थ्य,शिक्षा, गरीब महिला एवं बच्चों के सर्वांगीण विकास एवं पर्यावरण संरक्षण मृदा संरक्षण एवं प्राकृतिक एवं मानव जनित आपदा से संबंधित जानकारी एवं बचाव राहत कार्य करने तथा सकारात्मक पहलू और सार्थक कार्यक्रमों के माध्यम से जीवन में बदलाव लाने सामाजिक चुनौतियों का सामना करने और मानव कल्याण को बढ़ावा देने के लिए प्रेरित / कार्य करता है"
+    en: "  On 30th September 2025, the Himalaya Darshan Social Service Organization (charitable trust) was established in Danya, Almora (Uttarakhand) with the objective of promoting Indian culture, human values, health, and education in society. The trust works towards the overall development of underprivileged women and children, health and environmental protection, soil and water conservation, and providing information and relief efforts related to natural and man-made disasters.It also aims to inspire children in schools to develop love for the nation and the country, as well as moral and human values, conduct awareness programs, organize groups of women and children, and encourage them to work together. Through positive initiatives and meaningful programs, the organization seeks to bring change in lives, address social challenges, and promote human welfare.",
+    hi: "30 सितंबर 2025 को  दन्या अल्मोड़ा (उत्तराखंड) स्थापित हिमालय दर्शन सामाजिक सेवा संस्थान (charitable trust) के उद्देश्य समाज में भारतीय संस्कृति, मानव मूल्य, स्वास्थ्य, शिक्षा, गरीब महिला एवं बच्चों के सर्वांगीण विकास , स्वास्थ्य एवं पर्यावरण संरक्षण , मृदा संरक्षण , जल संरक्षण एवं प्राकृतिक एवं मानव जनित आपदाओ से संबंधित जानकारी एवं बचाव राहत कार्य करने एवं विद्यालय मैं बच्चों को राष्ट्र प्रेम देश प्रेम नैतिक एवं मानव मूल्यों पर कार्य करने हेतु प्रेरित करना जनजागरुकता कार्यक्रम करना एवं बच्चों एवं महिलाओं के समूह बनाकर उन्हें संगठित करना तथा सकारात्मक पहलू और सार्थक कार्यक्रमों के माध्यम से जीवन में बदलाव लाने सामाजिक चुनौतियों का सामना करने और मानव कल्याण को बढ़ावा देने के लिए प्रेरित / कार्य करता है"
   },
 
 
 
   // User Info
-  "user-info-title": { en: "👤 User Information", hi: "👤 उपयोगकर्ता जानकारी" },
+  "user-info-title": { en: "👤 User Information", hi: "👤 प्रबंधक जानकारी" },
   "label-fullname": { en: "Full Name", hi: "पूरा नाम" },
   "label-email": { en: "Email", hi: "ईमेल" },
   "label-phone": { en: "Phone", hi: "फ़ोन" },
@@ -228,14 +228,7 @@ const translations = {
         en: "The creative individuals who bring life to our language learning platform.",
         hi: "वे रचनात्मक व्यक्ति जो हमारे भाषा सीखने वाले प्लेटफ़ॉर्म में जीवन लाते हैं।"
     },
-    "team-member": {
-        en: "MUNA JOSHI",
-        hi: "मुणा जोशी"
-    },
-    "team-role": {
-        en: "Founder of",
-        hi: "संस्थापक"
-    },
+  
    
   // SECTION TITLE
   "meet-minds-title": { 
@@ -244,14 +237,14 @@ const translations = {
   },
 
   // TEAM MEMBERS
-  "muna-name": { en: "MUNA JOSHI", hi: "मुना जोशी" },
-  "muna-role": { en: "Founder & CEO", hi: "संस्थापक एवं मुख्य कार्यकारी अधिकारी" },
+  "muna-name": { en: "BIPIN  PANDEY", hi: "बिपिन पांडे" },
+  "muna-role": { en: "Founder & CEO", hi: "संस्थापक एवं प्रबंधक " },
 
-  "mukul-name": { en: "MUKUL PANT", hi: "मुकुल पंत" },
-  "mukul-role": { en: "Project Coordinator", hi: "सचिव" },
+  "mukul-name": { en: "MANOJ PANT", hi: "मनोज पंत" },
+  "mukul-role": { en: "Secretary", hi: "सचिव" },
 
-  "riya-name": { en: "RIYA SHARMA", hi: "पूजा पांडे " },
-  "riya-role": { en: "Content Specialist", hi: "सामग्री विशेषज्ञ" },
+  "pooja-name": { en: "POOJA PANDEY", hi: "पूजा पांडे " },
+  "pooja-role": { en: "Kosa President", hi: "कोसा अध्यक्ष" },
 
   // BRAND
   "brand-heading": { en: "HIMALAYA DARSHAN", hi: "हिमालय दर्शन" },
@@ -395,42 +388,42 @@ function openModal(data) {
 const teamMembers = {
   1: {
     img: "OIP (2).jpeg",
-    fullname: "Mr. vipin chnadr pandey",
-    role: "Founder ",
-    email: "vipinchandra@gmail.com",
-    phone: "+91 ",
-    location: "Rishikesh, Uttarakhand",
+    fullname: "Mr. Bipin chnadra pandey",
+    role: "Founder/ Manager",
+    email: "bipinpuja27@gmail.com",
+    phone: "+91 9149677383",
+    location: "Almora, Uttarakhand",
     education: "Bachelor of Arts in Social Science (BA)",
     facebook: "#",
     instagram: "#",
     linkedin: "https://linkedin.com/in/munajoshi",
-    bio: " Ex- central reserve police force."
+    bio: " EX- CENTRAL RESERVE POLICE FORCE."
   },
   2: {
     img: "OIP (2).jpeg",
-    fullname: "Mr. Mukul Pant",
+    fullname: "Mr. Manoj Pant",
     role: " Secretary ",
     email: "mukul.pant@example.com",
     phone: "+91 99999 00002",
-    location: "Dehradun, Uttarakhand",
+    location: "Almora, Uttarakhand",
     education: "Master of Science (Msc)",
     facebook: "#",
     instagram: "#",
     linkedin: "https://linkedin.com/in/mukulpant",
-    bio: "Manages on-ground projects ensuring smooth execution and maximum impact."
+   
   },
   3: {
     img: "OIP (2).jpeg",
-    fullname: "Mrs. pooja pandey ",
-    role: "CA",
-    email: "",
-    phone: "+91 99999 00003",
-    location: "Haridwar, Uttarakhand",
-    education: "BA in Mass Communication",
+    fullname: "Mrs. Pooja Pandey ",
+    role: "Kosa President",
+    email: "bipinpuja27@gmail.com",
+    phone: "+91 9528604154",
+    location: "Almora, Uttarakhand",
+    education: "BA in Education Science",
     facebook: "#",
     instagram: "#",
     linkedin: "https://linkedin.com/in/riyasharma",
-    bio: "Good in math."
+   
   }
 };
 
