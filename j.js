@@ -180,7 +180,7 @@ const translations = {
   // Hero
   "logo-3d-title": { en: "HIMALAY DARSHAN", hi: "हिमालय दर्शन" },
   "subtitle": { en: "Social Service Organization", hi: "सामाजिक सेवा संस्थान" },
-  "logo-subtitle": { en: "Strength • Resilience • Hope", hi: "सेवा • समर्पण• विश्वास" },
+  "logo-subtitle": { en: "Strength •  Social Service •Trust", hi: "सेवा • समर्पण• विश्वास" },
 
   // About
   "about-title": { en: "About Himalay Darshan", hi: "हिमालय दर्शन सामाजिक सेवा संस्थान के उद्देश्य " },
@@ -192,7 +192,7 @@ const translations = {
 
 
   // User Info
-  "user-info-title": { en: "👤 User Information", hi: "👤 प्रबंधक जानकारी" },
+  "user-info-title": { en: "👤 Manager Information", hi: "👤 प्रबंधक जानकारी" },
   "label-fullname": { en: "Full Name", hi: "पूरा नाम" },
   "label-email": { en: "Email", hi: "ईमेल" },
   "label-phone": { en: "Phone", hi: "फ़ोन" },
@@ -213,7 +213,7 @@ const translations = {
   },
   "explore-btn": { en: "Explore", hi: "अधिक जानकारी" },
   "product-text": { 
-    en: "DEAR ME<br>Inspiring lecture<br>for 6th-12th graders", 
+    en: "<br>Inspiring lecture<br>for 6th-12th graders", 
     hi: "6वीं से 12वीं<br>कक्षा के विद्यार्थियों<br>  के लिए प्रेरक व्याख्यान"
   },   "uploaded-title": { en: "Uploaded by HimSeva social service organization", hi: "हिमालय दर्शन सामाजिक सेवा संस्थान द्वारा अपलोड किया गया" },
     "uploaded-description": { 
@@ -410,13 +410,13 @@ const teamMembers = {
    
   },
   3: {
-    img: "images\\pooja pandey.jpg",
+    img: "images\\pooja bhabhi.jpg",
     fullname: "Mrs. Pooja Pandey ",
     role: "Kosa President",
     email: "bipinpuja27@gmail.com",
     phone: "+91 9528604154",
     location: "Almora, Uttarakhand",
-    education: "BA in Education Science",
+    education: "BA in Social Science",
     facebook: "#",
     instagram: "#",
     linkedin: "https://linkedin.com/in/riyasharma",

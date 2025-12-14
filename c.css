@@ -94,11 +94,11 @@ nav:hover {
 
 #langBtn:hover {
   transform: translateY(-5px) scale(1.03);
-  background: linear-gradient(145deg, #ef8a2c 0%, #0cecd2 50%, #a32eff 100%);
+  background: linear-gradient(145deg, #ccbbaa 0%, #0fe9cf 50%, #8f2eff82 100%);
   box-shadow: 
-    0 24px 64px rgba(12, 163, 218, 0.45),
+    0 24px 64px rgba(14, 156, 208, 0.634),
     0 0 0 1px rgba(255,255,255,0.3),
-    0 0 30px rgba(239, 138, 44, 0.4);
+    0 0 30px rgba(243, 235, 228, 0.4);
 }
 
 #langBtn:hover::before {
