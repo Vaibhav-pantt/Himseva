@@ -408,7 +408,7 @@ const teamMembers = {
   3: {
     img: "images\\pooja bhabhi.jpg",
     fullname: "Mrs. Pooja Pandey ",
-    role: "Kosa President",
+    role: "Treasurer",
     email: "bipinpuja27@gmail.com",
     phone: "+91 9528604154",
     location: "Almora, Uttarakhand",
