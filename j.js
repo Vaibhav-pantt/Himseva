@@ -208,13 +208,13 @@ const translations = {
    "trusted-users-text": { en: "Plus 253 Trusted users!", hi: "253+ विश्वसनीय उपयोगकर्ता!" },
   "hero-title": { en: "Latest <br><em> Updates</em>", hi: "नवीनतम <br><em> अपडेट्स</em>" },
   "hero-subtitle": { 
-    en: "Stay informed about recent natural disasters, emergencies, and critical alerts. Get timely updates to know what’s happening and how you can stay safe.", 
-    hi: "हाल की प्राकृतिक आपदाओं, आपात स्थितियों और महत्वपूर्ण अलर्ट के बारे में सूचित रहें। समय पर अपडेट पाएं और जानें कि क्या हो रहा है और कैसे सुरक्षित रहें।"
+    en: "Inspiring lecture for 6th-12th graders on mastering life skills, sharpening focus, achieving academic goals, and embracing social responsibility.<br><br> Recognition and prizes for students demonstrating outstanding communication.", 
+    hi: "Modivation lecture for class 6th to 12th.अपने जीवन को किस प्रकार बेहतर बनाए, एकाग्रता कैसे लाएं, शिक्षा का उद्देश्य, अपनी संस्कृति और समाज के लिए हमारा दायित्व आदि विषयों पर बच्चों को जागरूक किया।"
   },
   "explore-btn": { en: "Explore", hi: "अधिक जानकारी" },
   "product-text": { 
-    en: "DEAR ME<br>Sacred Secret<br>ILLUMINATING SAFFRON SERUM", 
-    hi: "डियर मी<br>पवित्र रहस्य<br>प्रकाशमान केसर सीरम"
+    en: "DEAR ME<br>Inspiring lecture<br>for 6th-12th graders", 
+    hi: "6वीं से 12वीं<br>कक्षा के विद्यार्थियों<br>  के लिए प्रेरक व्याख्यान"
   },   "uploaded-title": { en: "Uploaded by HimSeva social service organization", hi: "हिमालय दर्शन सामाजिक सेवा संस्थान द्वारा अपलोड किया गया" },
     "uploaded-description": { 
         en: "All videos are verified and uploaded by the HIMALAYA DARSHAN social service organization Team — your trusted source for content.", 
@@ -224,10 +224,7 @@ const translations = {
         en: "Meet the Minds Behind HIMALAYA DARSHAN<br>social service organization",
         hi: "हिमालय दर्शन के पीछे के विचारशील लोग<br>सामाजिक सेवा संस्थान"
     },
-    "team-description": {
-        en: "The creative individuals who bring life to our language learning platform.",
-        hi: "वे रचनात्मक व्यक्ति जो हमारे भाषा सीखने वाले प्लेटफ़ॉर्म में जीवन लाते हैं।"
-    },
+   
   
    
   // SECTION TITLE
@@ -387,7 +384,7 @@ function openModal(data) {
 /* TEAM DATA */
 const teamMembers = {
   1: {
-    img: "OIP (2).jpeg",
+    img: "images\\bipin pandey.jpg",
     fullname: "Mr. Bipin chnadra pandey",
     role: "Founder/ Manager",
     email: "bipinpuja27@gmail.com",
@@ -400,7 +397,7 @@ const teamMembers = {
     bio: " EX- CENTRAL RESERVE POLICE FORCE."
   },
   2: {
-    img: "OIP (2).jpeg",
+    img: "images\\mukul pant.jpg",
     fullname: "Mr. Manoj Pant",
     role: " Secretary ",
     email: "mukulmanojpant@gmail.com",
@@ -413,7 +410,7 @@ const teamMembers = {
    
   },
   3: {
-    img: "OIP (2).jpeg",
+    img: "images\\pooja pandey.jpg",
     fullname: "Mrs. Pooja Pandey ",
     role: "Kosa President",
     email: "bipinpuja27@gmail.com",

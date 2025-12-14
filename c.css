@@ -55,6 +55,108 @@ nav:hover {
   align-items: center;
   gap: 0.8rem;
 }
+#langBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* Reduced from 8px */
+  
+  background: linear-gradient(145deg, #0ca3da 0%, #050208 70%, #0cecd2 100%);
+  color: white;
+  padding: 10px 24px; /* Reduced from 16px 36px */
+  border: none;
+  border-radius: 18px; /* Reduced from 24px */
+  cursor: pointer;
+  font-size: 14px; /* Reduced from 16px */
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.6px; /* Slightly reduced */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+  box-shadow: 
+    0 8px 24px rgba(12, 163, 218, 0.3), /* Reduced shadow spread */
+    0 0 0 1px rgba(255,255,255,0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px) saturate(150%);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+#langBtn::before {
+  content: '🇮🇳';
+  display: inline-block;
+  font-size: 18px; /* Reduced from 20px */
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+#langBtn:hover {
+  transform: translateY(-5px) scale(1.03);
+  background: linear-gradient(145deg, #ef8a2c 0%, #0cecd2 50%, #a32eff 100%);
+  box-shadow: 
+    0 24px 64px rgba(12, 163, 218, 0.45),
+    0 0 0 1px rgba(255,255,255,0.3),
+    0 0 30px rgba(239, 138, 44, 0.4);
+}
+
+#langBtn:hover::before {
+  transform: scale(1.25) rotate(360deg);
+}
+
+#langBtn:active {
+  transform: translateY(-2px) scale(0.96);
+  box-shadow: 
+    0 8px 24px rgba(12, 163, 218, 0.35),
+    inset 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ripple effect */
+#langBtn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+#langBtn:active::after {
+  width: 300px;
+  height: 300px;
+}
+#langBtn:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(12, 163, 218, 0.5),
+    0 12px 40px rgba(12, 163, 218, 0.35);
+}
+
+@media (max-width: 768px) {
+  #langBtn {
+    padding: 14px 28px;
+    font-size: 15px;
+    border-radius: 20px;
+    gap: 6px;
+  }
+  
+  #langBtn::before {
+    font-size: 18px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #langBtn {
+    background: linear-gradient(145deg, #1e3a8a 0%, #0f172a 100%);
+  }
+}
+
 
 .badge {
   width: 80px;
@@ -155,7 +257,12 @@ transition: width 0.2s ease;
     display: flex;
   }
 
-
+  #langBtn {
+    padding: 8px 16px;  /* smaller padding */
+    font-size: 14px;     /* smaller text */
+    border-radius: 14px; /* slightly smaller rounding */
+    gap: 3px;            /* less space between text and emoji */
+  }
 
   .links {
     display: none;
@@ -235,7 +342,12 @@ nav.expanded .links a:hover {
     .hamburger {
       display: flex;
     }
-
+  #langBtn {
+    padding: 8px 16px;  /* smaller padding */
+    font-size: 14px;     /* smaller text */
+    border-radius: 14px; /* slightly smaller rounding */
+    gap: 3px;            /* less space between text and emoji */
+  }
     .links, .user-area {
       display: none;
       flex-direction: column;
