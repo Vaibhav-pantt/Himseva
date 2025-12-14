@@ -770,7 +770,8 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
 
 .events-section {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+ background: linear-gradient(135deg, #f4efe8 0%, #c2a477 100%);
+
   color: #f1f1f1; /* soft off-white */
   overflow: hidden;
   position: relative;
@@ -910,7 +911,7 @@ transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(.17,.67,.38,1.27)
 .event-card p {
   font-size: 1rem;
   line-height: 1.5;
-  color: #000;            /* keep paragraphs dark by default */
+  color: #ac5a5a;            /* keep paragraphs dark by default */
   margin-bottom: 0;
   transition: color 0.25s ease;
 }
