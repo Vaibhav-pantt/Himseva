@@ -18,6 +18,12 @@ body {
   margin: 0 auto;
   padding: 40px 20px;
 }
+.hero-section,
+.about-content,
+[data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
 
     /* Navbar */
 nav {
@@ -36,7 +42,7 @@ nav {
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.3); 
-  border-radius: 0 0 15px 15px;   /* bottom round only */
+  border-radius: 1px 5px 15px 15px;   /* bottom round only */
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 
   font-family: 'Inter', sans-serif;
@@ -2314,7 +2320,7 @@ h3 {
 
 /* ------------------------------
    MAIN FOOTER STYLE
------------------------------- */
+--------------------*/
 .footer-contact {
   background-color: #1a1a1a;
   color: #eee;
@@ -2640,4 +2646,4 @@ footer p span {
   color: #0a9ed4;             /* Darker hover color */
   text-decoration: underline; /* Underline on hover */
 }
-
+ 
