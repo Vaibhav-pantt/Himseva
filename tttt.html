@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Section - Modern Cult Classic</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%);
+    --glass-primary: rgba(255, 255, 255, 0.08);
+    --glass-secondary: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --accent-primary: #7a6cff;
+    --accent-secondary: #e879f9;
+    --text-primary: #f8fafc;
+    --text-muted: #cbd5e1;
+    --shadow-main: 0 25px 60px rgba(0,0,0,0.5);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* HERO SECTION */
+  .hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(3rem, 7vw, 6rem);
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(5rem, 12vw, 8rem) clamp(3rem, 8vw, 6rem);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+  }
+  .hero-section.visible { opacity:1; transform:translateY(0); }
+
+  /* LEFT CONTENT */
+  .hero-content {
+    flex: 1 1 450px;
+    min-width: 320px;
+    z-index: 2;
+  }
+
+  /* TRUSTED USERS */
+  .trusted-users {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    background: var(--glass-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .trusted-users .user {
+    width: clamp(50px, 7vw, 60px);
+    height: clamp(50px, 7vw, 60px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: transform 0.3s ease;
+  }
+  .trusted-users .user:hover { transform: translateY(-6px) scale(1.1); border-color: var(--accent-primary); }
+
+  .trusted-users-text {
+    font-size: clamp(0.95rem,2vw,1.1rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    position: relative;
+  }
+  .trusted-users-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg,var(--accent-primary),var(--accent-secondary));
+    border-radius: 1px;
+  }
+
+  /* HERO TITLE */
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin: 0 0 clamp(2rem,4vw,3rem);
+    background: linear-gradient(135deg, var(--text-primary) 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .hero-title em {
+    background: linear-gradient(90deg,var(--accent-primary),var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: normal;
+  }
+
+  /* HERO DATE */
+  .hero-date {
+    font-size: clamp(1rem,2vw,1.2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    background: var(--glass-primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 24px;
+    display: inline-block;
+    margin-bottom: clamp(2rem,5vw,3rem);
+    backdrop-filter: blur(20px);
+  }
+
+  /* HERO SUBTITLE */
+  .hero-subtitle {
+    font-size: clamp(1.1rem,2vw,1.35rem);
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: clamp(3rem,6vw,4rem);
+    max-width: 700px;
+  }
+
+  /* BUTTON GROUP */
+  .button-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .explore-btn, .arrow-btn {
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+  }
+  .explore-btn {
+    background: linear-gradient(145deg,var(--accent-primary),var(--accent-secondary));
+    color: var(--text-primary);
+    padding: 1rem 2.5rem;
+  }
+  .explore-btn:hover { transform: translateY(-6px) scale(1.05); }
+  .arrow-btn {
+    background: var(--glass-primary);
+    color: var(--accent-primary);
+    padding: 1rem 1.5rem;
+  }
+  .arrow-btn:hover { transform: translateY(-6px); background: var(--glass-secondary); }
+
+  /* PRODUCT IMAGE AREA */
+  .hero-image-area {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .product-image {
+    width: clamp(350px,45vw,550px);
+    height: clamp(450px,55vw,700px);
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    background: var(--glass-primary);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .product-image:hover { transform: translateY(-12px) scale(1.03); }
+  .product-img { width:100%; height:100%; object-fit: cover; }
+  .product-text-overlay {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(1.3rem,3vw,2rem);
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.4);
+    padding:1rem 2rem;
+    border-radius:24px;
+    backdrop-filter: blur(16px);
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:768px) {
+    .hero-section { flex-direction: column; padding:4rem 2rem; }
+    .hero-image-area { order:-1; margin-bottom:3rem; }
+    .hero-content { text-align:center; }
+    .trusted-users { justify-content:center; }
+    .button-group { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero-section" data-reveal>
+  <div class="hero-content">
+    <div class="trusted-users">
+      <img class="user" src="OIP (1).jpeg" alt="User 1">
+      <img class="user" src="oip3.jpg" alt="User 2">
+      <img class="user" src="OIP (2).jpeg" alt="User 3">
+      <span class="trusted-users-text">Plus 253 Trusted users!</span>
+    </div>
+
+    <h1 class="hero-title">
+      Latest <br><em>Updates</em>
+    </h1>
+
+    <p class="hero-date">📅 December 11, 2025</p>
+
+    <p class="hero-subtitle">
+      Inspiring lecture for 6th-12th graders on mastering life skills, sharpening focus, achieving academic goals, and embracing social responsibility.<br><br>
+      Recognition and prizes for students demonstrating outstanding communication.
+    </p>
+
+    <div class="button-group">
+      <button class="explore-btn" onclick="window.location.href='event.html'">Explore</button>
+      <button class="arrow-btn" onclick="window.location.href='event.html'">→</button>
+    </div>
+  </div>
+
+  <div class="hero-image-area">
+    <a href="event.html" class="product-link">
+      <div class="product-image">
+        <img class="product-img" src="images/MT image 2.jpg" alt="Inspiring Lecture">
+        <div class="product-text-overlay">
+          INSPIRING LECTURE<br>6TH–12TH GRADERS<br>LIFE SKILLS & EXCELLENCE
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.hero-section').classList.add('visible');
+  });
+</script>
+</body>
+</html>
+

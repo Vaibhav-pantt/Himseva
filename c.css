@@ -99,7 +99,7 @@ nav:hover {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-image: url('himseva2.png');
+  background-image: url('images\\himseva2.png');
   background-size: cover;
   background-position: center;
   border: 2px solid #A8B5A2;
@@ -320,7 +320,7 @@ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* smoother easing */
       rgba(10, 25, 18, 0.25) 45%,
       rgba(10, 20, 15, 0.30) 100%
     ),
-    url("adhikailash.jpg");
+    url("images\\adhikailash.jpg");
 
   background-size: cover;           /* 🔥 KEY FIX */
   background-position: center center;
@@ -337,7 +337,7 @@ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* smoother easing */
   inset: 0;
   z-index: 1;
 
-  background-image: url("adhikailash.jpg");
+  background-image: url("images\\adhikailash.jpg");
   background-size: 110% auto;
   background-position: center 55%;
   background-repeat: no-repeat;
@@ -1834,17 +1834,22 @@ body, html {
   transform: scale(1.05);
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
-h2{
-   font-family: 'Playfair Display', serif; /* classy, cinematic font */
-    font-size: clamp(1.5rem, 3vw, 1.5rem); /* responsive size */
-    font-weight: 700;
-  
-    color: var(--himalay-snow); /* soft snow-white */
-    letter-spacing: 1px;
-    text-align: center;
-    margin: 0.5rem 0;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+#meet-minds-title {
+  font-family: 'Inter', 'Noto Sans', sans-serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem); /* responsive font size */
+  font-weight: 700;
+  line-height: 1.4; /* better spacing between lines */
+  text-align: center; /* center align text */
+  color: #0d425a;
+  margin-bottom: 2rem;
 }
+
+#meet-minds-title .highlight {
+  color: #e8b066; /* accent color */
+  font-weight: 900; /* emphasize HIMALAYA DARSHAN */
+}
+
+
 h3 {
     font-family: 'Playfair Display', serif; /* classy, cinematic font */
     font-size: clamp(1.5rem, 3vw, 1.5rem); /* responsive size */
