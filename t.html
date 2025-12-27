@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himalay Darshan</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================= ROOT ================= */
+:root {
+  --himalay-primary: #2D5016;
+  --himalay-secondary: #A8B5A2;
+  --himalay-accent: #D4A574;
+  --himalay-snow: #F8F9FA;
+  --himalay-glow: rgba(212, 165, 116, 0.55);
+}
+
+/* ================= SECTION ================= */
+/* ================= SECTION ================= */
+.mountain-logo-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ STATIC SHARP BACKGROUND */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(10, 25, 18, 0.25) 45%,
+      rgba(10, 20, 15, 0.30) 100%
+    ),
+    url("adhikailash.jpg");
+
+  background-size: cover;           /* 🔥 KEY FIX */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;    /* 🔥 KEY FIX */
+
+  filter: contrast(1.15) saturate(1.1) brightness(1.05);
+}
+
+/* ================= CINEMATIC LAYER ================= */
+.mountain-logo-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image: url("adhikailash.jpg");
+  background-size: 110% auto;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+
+  animation: mountainMoveSafe 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* ================= LIGHT / MIST ================= */
+.mountain-logo-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 50% 18%,
+      rgba(255, 240, 190, 0.32),
+      transparent 58%),
+    radial-gradient(circle at 80% 78%,
+      rgba(190, 225, 210, 0.22),
+      transparent 65%);
+
+  animation: divineGlow 14s ease-in-out infinite alternate;
+}
+
+/* ================= SAFE ANIMATION ================= */
+@keyframes mountainMoveSafe {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.06) translateY(-14px);
+  }
+}
+
+
+/* ================= LOGO ================= */
+.logo-3d-container {
+  position: relative;
+  z-index: 5;
+  perspective: 1100px;
+  text-align: center;
+}
+.logo-3d-container::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0.15) 55%,
+      transparent 75%
+    );
+
+  filter: blur(45px);
+}
+
+
+.logo-3d {
+  transform-style: preserve-3d;
+  animation: logoRise 2.9s cubic-bezier(0.19,1,0.22,1) forwards;
+}
+
+.logo-3d h1 {
+  font-family: 'Noto Sans Devanagari','Inter',sans-serif;
+  font-size: clamp(3.2rem, 10vw, 6.4rem);
+  font-weight: 900;
+  margin: 0;
+  line-height: 0.9;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f0e2cf 45%,
+    #d4a574 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 18px 40px rgba(0,0,0,0.35);
+
+  transform: translateZ(90px) rotateX(9deg);
+}
+
+/* ===== LOGO RISE ===== */
+@keyframes logoRise {
+  0% {
+    opacity: 0;
+    transform: translateY(220px) translateZ(-220px) rotateX(48deg) scale(0.38);
+    filter: blur(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(110px) rotateX(9deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ================= SUBTITLES ================= */
+.subtitle,
+.sub-subtitle,
+.logo-subtitle {
+  margin-top: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16rem;
+
+  color: #f8f9fa; /* fallback */
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e8d6b2
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.9),
+    0 6px 14px rgba(0,0,0,0.65);
+
+  opacity: 0;
+  animation: subtitleUp 2s ease-out forwards;
+}
+
+.subtitle     { animation-delay: 0.9s; font-size: 1.45rem; }
+.sub-subtitle { animation-delay: 1.3s; font-size: 1.2rem; }
+.logo-subtitle{ animation-delay: 1.7s; font-size: 1rem; }
+
+@keyframes subtitleUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+/* 💻 LAPTOP & DESKTOP – NO BLUR */
+@media (max-width: 1600px) {
+  .mountain-logo-section::before {
+    animation: none;      /* 🔥 STOP GPU BLUR */
+    background-size: cover;
+  }
+}
+
+/* 📱 MOBILE – LIGHT CINEMATIC OK */
+@media (max-width: 768px) {
+  .mountain-logo-section::before {
+    animation: mountainMoveSafe 24s ease-in-out infinite alternate;
+    background-size: 145% auto;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<section class="mountain-logo-section">
+  <div class="logo-3d-container">
+    <div class="logo-3d">
+      <h1>HIMALAY DARSHAN</h1>
+    </div>
+    <p class="subtitle">Social Service Organization</p>
+    <p class="sub-subtitle">Charitable Trust</p>
+    <p class="logo-subtitle">Strength • Social Service • Trust</p>
+  </div>
+</section>
+
+</body>
+</html>

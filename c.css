@@ -49,8 +49,6 @@ nav {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
 nav:hover {
   background: rgba(255,255,255,0.25);
   box-shadow: 0 12px 48px rgba(31, 38, 135, 0.15);
@@ -404,74 +402,221 @@ nav.expanded .links a:hover {
     margin-top: 0.5rem;
   }
 }
-/* 🌄 HIMALAY DARSHAN - 3D MOUNTAIN LOGO SECTION */
-:root { --himalay-primary: #2D5016;
-   --himalay-secondary: #A8B5A2; 
-   --himalay-accent: #D4A574;
-    --himalay-snow: #F8F9FA; 
-    --himalay-glow: rgba(212, 165, 116, 0.6); } 
-.mountain-logo-section { min-height: 100vh;
-   display: flex;
-    flex-direction: column; 
-    justify-content: center;
-     align-items: center; 
-     padding: 2rem; 
-     position: relative; /* Background */
-      background: linear-gradient(135deg, rgba(26, 60, 43, 0.4) 0%,
-       rgba(15, 36, 26, 0.4) 50%, rgba(15, 36, 26, 0.4) 100%), 
-       url("images\\moutain.avif");
-   background-blend-mode: overlay; /* keeps the overlay effect but makes image visible */
-       background-size: cover; 
-       background-position: center;
-        background-attachment: fixed;
-         overflow: hidden; } 
-.mountain-logo-section::before { content: '';
-   position: absolute; 
-   top: 0; 
-   left: 0;
-    right: 0;
-     bottom: 0;
-      background: radial-gradient(circle at 30% 20%,
-       rgba(212, 165, 116, 0.3) 0%, 
-       transparent 50%), 
-       radial-gradient(circle at 70% 80%, rgba(168, 181, 162, 0.25) 0%,
-        transparent 50%); z-index: 1; 
-      } /* 3D LOGO CONTAINER - EMERGES FROM MOUNTAINS */ 
-.logo-3d-container { position: relative;
-   z-index: 3;
-    perspective: 1000px; 
-    perspective-origin: 50% 50%; } 
-#logo-3d-title { font-family: 'Noto Sans Devanagari', 'Chiefland Variable', sans-serif; 
-  font-size: clamp(3rem, 6vw, 5rem); /* responsive and large */
-   font-weight: 700;
-    color: #fff;
-     text-transform: none; /* Important for Hindi */
-      position: relative; 
-    }
- .logo-3d { position: relative; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; cursor: grab; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); } /* MAIN 3D TEXT */ 
- .logo-3d h1 { font-size: clamp(4rem, 12vw, 10rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.9; margin: 0; text-align: center; color: transparent; /* Multi-layer 3D effect */ background: linear-gradient(135deg, #F8F9FA 0%, #E8D5C4 50%, #D4A574 100%); -webkit-background-clip: text; background-clip: text; /* 3D Transform Stack */ transform: translateZ(80px) rotateX(10deg) rotateY(0deg); position: relative; } /* 3D SHADOW LAYERS (Creates depth) */ .logo-3d::before, .logo-3d::after { content: attr(data-text); position: absolute; top: 0; left: 0; right: 0; font-family: inherit; font-size: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; text-align: inherit; } .logo-3d::before { color: rgba(45, 80, 22, 0.8); transform: translateZ(40px) rotateX(5deg); z-index: 2; } .logo-3d::after { color: rgba(26, 42, 30, 0.6); transform: translateZ(0px) rotateX(0deg); z-index: 1; } /* --- CINEMATIC POWERFUL RISE --- */ .logo-3d.animate { animation: himalayCinematicRise 2.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; } @keyframes himalayCinematicRise { 0% { opacity: 0; transform: translateY(200px) translateZ(-200px) rotateX(45deg) scale(0.4); filter: blur(25px) brightness(0.4); } 45% { opacity: 0.8; transform: translateY(-20px) translateZ(60px) rotateX(15deg) scale(1.08); filter: blur(6px) brightness(1.1); } 100% { opacity: 1; transform: translateY(0) translateZ(100px) rotateX(10deg) scale(1); filter: blur(0) brightness(1); } } /* ----- SUBTITLE BELOW LOGO ----- */ .logo-subtitle, #subtitle { position: relative; z-index: 4; /* above the background and 3D layers */ margin-top: 0.6rem; font-size: clamp(1.8rem, 2.5vw, 3rem); text-transform: uppercase; letter-spacing: 0.1rem; font-weight: 400; text-align: center; /* Gradient text using Himalay theme */ background: linear-gradient( 135deg, var(--himalay-snow) 0%, var(--himalay-accent) 100% ); -webkit-background-clip: text; background-clip: text; color: wheat; opacity: 0; transform: translateY(30px) scale(0.9); animation: subtitleFloatUp 2s ease-out forwards; } #sub-subtitle { position: relative; z-index: 4; /* above the background and 3D layers */ margin-top: 0.6rem; font-size: clamp(1.5rem, 2.2vw, 2.4rem); /* slightly larger & cleaner scaling */ text-transform: uppercase; letter-spacing: 0.12rem; font-weight: 500; text-align: center; color: var(--himalay-snow); /* UPDATED TEXT COLOR */ text-shadow: 0 2px 6px rgba(0,0,0,0.25); /* gives depth on 3D bg */ /* Gradient text using Himalay theme */ background: linear-gradient( 135deg, var(--himalay-snow) 0%, var(--himalay-accent) 100% ); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0; transform: translateY(30px) scale(0.9); animation: subtitleFloatUp 2s ease-out forwards; } /* Add staggered animation delay for second subtitle */ #logo-subtitle { animation-delay: 1.2s; } /* Glow effect behind subtitle */ .logo-subtitle::after, #subtitle::after { content: ""; position: absolute; top: 50%; left: 50%; width: 140%; height: 140%; transform: translate(-50%, -50%); background: var(--himalay-glow); filter: blur(25px); opacity: 0.5; z-index: -1; border-radius: 50%; } /* --- Subtitles floating up animation --- */ @keyframes subtitleFloatUp { 0% { opacity: 0; transform: translateY(40px) scale(0.85); filter: blur(6px); } 60% { opacity: 0.9; transform: translateY(-6px) scale(1.05); filter: blur(1px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-/* RESPONSIVE */
- @media (max-width: 799px) { .mountain-logo-section { padding: 1rem; background-attachment: scroll; } 
- .logo-3d h1 { letter-spacing: -0.02em; } } 
- /* 🌄 PERFECT 480px MOBILE - SMALL PHONE OPTIMIZATION */
-  @media (max-width: 480px) { .mountain-logo { min-height: 88vh; padding: 1.25rem 1rem; /* ULTRA-CLEAN MOBILE BACKGROUND */ background: linear-gradient(135deg, rgba(45, 80, 22, 0.92) 0%, rgba(26, 60, 43, 0.95) 100%), url('htps://images.unsplash.com/ph-1506905925346-21bda4d32df4?auto=format&fit=cover&w=1950&q=85') !important; background-size: 150% auto !important; background-position: center 25% !important; background-attachment: scroll !important; background-repeat: no-repeat !important; } } /* ULTRA-OPTIMIZED LOGO */ 
- .logo-3d-container { perspective: 500px; } 
- .logo-3d h1 { font-size: clamp(2.6rem, 9.5vw, 4.8rem) !important; letter-spacing: -0.015em !important; line-height: 0.93 !important; padding: 0 0.4rem !important; max-width: 98vw !important; margin: 0 auto !important; } /* SIMPLIFIED 3D FOR PERFORMANCE */ 
- .logo-3d { transform: translateZ(35px) rotateX(7deg) !important; } 
- .logo-3d::before { transform: translateZ(15px) rotateX(2deg) !important; opacity: 0.85; } 
- .logo-3d::after { transform: translateZ(-3px) !important; opacity: 0.7; } /* COMPACT GLOW */
- 
- .logo-glow { width: 240px; height: 120px; filter: blur(16px); } /* PERFECT SUBTITLE */ 
- .logo-subtitle { font-size: clamp(0.95rem, 3.8vw, 1.15rem); padding: 0 0.75rem; margin-top: 1.25rem; max-width: 92vw; } /* TOUCH OPTIMIZED */
-  .logo-3d:active { transform: translateZ(45px) rotateX(4deg) scale(0.97) !important; } /* SHORT MOBILE SCREENS */
-   @media (max-height: 650px) and (max-width: 480px) { .mountain-logo-section { min-height: 85vh; } .logo-subtitle { margin-top: 1rem; font-size: 0.95rem; } }
 
-/* ABOUT SECTION - REFINED ELEGANCE */
-/* 🌄 SIMPLE CLASSIC ABOUT SECTION - MINIMALIST DESIGN */
-/* === Scroll Depth Animation (Adds movement — does NOT change design) === */
-/* ============================
-   DEPTH SCROLL ANIMATION
-============================ */
+
+
+/* ================= ROOT ================= */
+:root {
+  --himalay-primary: #2D5016;
+  --himalay-secondary: #A8B5A2;
+  --himalay-accent: #D4A574;
+  --himalay-snow: #F8F9FA;
+  --himalay-glow: rgba(212, 165, 116, 0.55);
+}
+
+/* ================= SECTION ================= */
+/* ================= SECTION ================= */
+.mountain-logo-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ STATIC SHARP BACKGROUND */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(10, 25, 18, 0.25) 45%,
+      rgba(10, 20, 15, 0.30) 100%
+    ),
+    url("adhikailash.jpg");
+
+  background-size: cover;           /* 🔥 KEY FIX */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;    /* 🔥 KEY FIX */
+
+  filter: contrast(1.15) saturate(1.1) brightness(1.05);
+}
+
+/* ================= CINEMATIC LAYER ================= */
+.mountain-logo-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image: url("adhikailash.jpg");
+  background-size: 110% auto;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+
+  animation: mountainMoveSafe 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* ================= LIGHT / MIST ================= */
+.mountain-logo-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 50% 18%,
+      rgba(255, 240, 190, 0.32),
+      transparent 58%),
+    radial-gradient(circle at 80% 78%,
+      rgba(190, 225, 210, 0.22),
+      transparent 65%);
+
+  animation: divineGlow 14s ease-in-out infinite alternate;
+}
+
+/* ================= SAFE ANIMATION ================= */
+@keyframes mountainMoveSafe {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.06) translateY(-14px);
+  }
+}
+
+
+/* ================= LOGO ================= */
+.logo-3d-container {
+  position: relative;
+  z-index: 5;
+  perspective: 1100px;
+  text-align: center;
+}
+.logo-3d-container::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 35%,
+      rgba(0, 0, 0, 0.15) 55%,
+      transparent 75%
+    );
+
+  filter: blur(45px);
+}
+
+
+.logo-3d {
+  transform-style: preserve-3d;
+  animation: logoRise 2.9s cubic-bezier(0.19,1,0.22,1) forwards;
+}
+
+.logo-3d h1 {
+  font-family: 'Noto Sans Devanagari','Inter',sans-serif;
+  font-size: clamp(3.2rem, 10vw, 6.4rem);
+  font-weight: 900;
+  margin: 0;
+  line-height: 0.9;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f0e2cf 45%,
+    #d4a574 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 18px 40px rgba(0,0,0,0.35);
+
+  transform: translateZ(90px) rotateX(9deg);
+}
+
+/* ===== LOGO RISE ===== */
+@keyframes logoRise {
+  0% {
+    opacity: 0;
+    transform: translateY(220px) translateZ(-220px) rotateX(48deg) scale(0.38);
+    filter: blur(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(110px) rotateX(9deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ================= SUBTITLES ================= */
+.subtitle,
+.sub-subtitle,
+.logo-subtitle {
+  margin-top: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16rem;
+
+  color: #f8f9fa; /* fallback */
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e8d6b2
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.9),
+    0 6px 14px rgba(0,0,0,0.65);
+
+  opacity: 0;
+  animation: subtitleUp 2s ease-out forwards;
+}
+
+.subtitle     { animation-delay: 0.9s; font-size: 1.45rem; }
+.sub-subtitle { animation-delay: 1.3s; font-size: 1.2rem; }
+.logo-subtitle{ animation-delay: 1.7s; font-size: 1rem; }
+
+@keyframes subtitleUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+/* 💻 LAPTOP & DESKTOP – NO BLUR */
+@media (max-width: 1600px) {
+  .mountain-logo-section::before {
+    animation: none;      /* 🔥 STOP GPU BLUR */
+    background-size: cover;
+  }
+}
+
+/* 📱 MOBILE – LIGHT CINEMATIC OK */
+@media (max-width: 768px) {
+  .mountain-logo-section::before {
+    animation: mountainMoveSafe 24s ease-in-out infinite alternate;
+    background-size: 145% auto;
+  }
+}
 /* About Section Container */
 /* SECTION BACKGROUND (Apple subtle grey) */
 .hero-section {
