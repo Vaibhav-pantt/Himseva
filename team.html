@@ -351,32 +351,6 @@ html,body{
   to{opacity:1;transform:translateY(0);}
 }
 
-@media (max-width: 900px) {
-
-  .team-grid{
-    flex-direction:column;
-    height:auto;
-  }
-
-  .team-card{
-    height:320px;
-    transform:none !important;
-  }
-
-  /* Always show overlay slightly */
-  .team-info{
-    opacity:1;
-    clip-path: inset(45% 0 0 0);
-    transform:none;
-    backdrop-filter: blur(6px) saturate(120%);
-  }
-
-  /* Tap interaction */
-  .team-card:active .team-info{
-    clip-path: inset(0 0 0 0);
-    backdrop-filter: blur(2px) saturate(150%);
-  }
-}
 
 
 @media (max-width: 768px){
@@ -390,16 +364,59 @@ html,body{
     height:100vh;
     border-radius:0;
   }
+.modal-left {
+  width: 100%;              /* full width on mobile */
+  height: 55%;              /* slightly taller for better visibility */
+  position: relative;
+  overflow: hidden;         /* keep image contained */
+  border-top-left-radius: 12px;  /* soft rounded corners */
+  border-top-right-radius: 12px;
+  background: #000;         /* fallback background */
+}
 
-  .modal-left{
-    width:100%;
-    height:40%;
+  .modal-right {
+    height: 55%;                        /* fills remaining space */
+    padding: 24px 20px 32px;            /* comfortable spacing */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;  /* smooth iOS scroll */
+    background: #fff;                    /* professional clean look */
+    border-top-left-radius: 20px;        /* rounded top corners */
+    border-top-right-radius: 20px;
+    box-shadow: 0 -8px 25px rgba(0,0,0,0.12); /* subtle depth */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 14px;                           /* consistent spacing between content */
+    transition: all 0.35s ease-in-out;
   }
 
-  .modal-right{
-    height:60%;
-    padding:22px;
+  .modal-right h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.35;
   }
+
+  .modal-right .detail {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .modal-right .label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2D5016;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  .modal-right .typewriter {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+  }
+
 
   .close-modal{
     top:12px;
