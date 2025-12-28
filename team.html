@@ -570,11 +570,32 @@ html,body{
 }
 
 
-  .close-modal{
-    top:12px;
-    right:12px;
-    background:rgba(0,0,0,.7);
-    color:#fff;
+    .close-modal {
+    position: fixed;               /* make it relative to viewport, not parent */
+    top: 16px;                     /* slight padding from top */
+    right: 16px;                   /* slight padding from right */
+    width: 48px;                   /* slightly larger for easier touch */
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;                /* ensure it's above everything */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .close-modal:hover {
+    transform: rotate(90deg) scale(1.12);
+    background: #000;
+  }
+
+  .close-modal:active {
+    transform: scale(0.9) rotate(90deg);
   }
 }
 
