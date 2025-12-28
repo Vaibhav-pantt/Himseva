@@ -175,92 +175,188 @@ html,body{
   .team-card{
     height:300px;
   }
-  /* ================= MOBILE TOUCH GRID ================= */
-@media(max-width:900px){
-
-  /* Grid layout adjustments */
-  .team-grid{
-    flex-direction:column;
-    height:auto;
-    gap:16px;
-    padding:0 12px;
+}
+@media (max-width: 768px) {
+  /* ================= MODAL BACKDROP ================= */
+  .team-modal {
+    padding: 0;
+    backdrop-filter: blur(12px) saturate(120%);
   }
 
-  /* Individual team cards */
-  .team-card{
-    height:320px;
-    border-radius:12px;
-    overflow:hidden;
-    transform:none;  /* disable hover scale on mobile */
+  /* ================= MODAL CONTAINER ================= */
+  .team-modal-content {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    animation: modalRise .45s cubic-bezier(.16,1,.3,1);
+  }
+
+  /* ================= IMAGE PANEL ================= */
+  .modal-left {
+    width: 100%;
+    flex: 0 0 45%; /* takes 45% of modal height */
     position: relative;
-    touch-action: manipulation; /* smooth touch interaction */
+    overflow: hidden;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
 
-  /* Overlay base state */
-  .team-info{
-    position:absolute;
-    inset:0;
+  .modal-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-left::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: linear-gradient(
-      to top,
-      rgba(0,0,0,.85) 0%,
-      rgba(0,0,0,.55) 45%,
-      rgba(0,0,0,.15) 100%
+      to bottom,
+      rgba(0,0,0,0.15),
+      rgba(0,0,0,0.65)
     );
-    backdrop-filter: blur(8px) saturate(120%);
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    align-items:center;
-    padding:24px 16px;
-    opacity:0;
-    clip-path: inset(100% 0 0 0);  /* start from bottom */
-    transform: translateY(20px);
-    transition:
-      clip-path .7s cubic-bezier(.16,1,.3,1),
-      transform .7s cubic-bezier(.16,1,.3,1),
-      opacity .45s ease,
-      backdrop-filter .5s ease;
   }
 
-  /* Overlay active on tap/focus */
-  .team-card:active .team-info,
-  .team-card:focus .team-info{
-    opacity:1;
-    clip-path: inset(0 0 0 0);  /* reveal overlay fully */
-    transform: translateY(0);
+  /* ================= CONTENT PANEL ================= */
+  .modal-right {
+    flex: 1; /* takes remaining height */
+    padding: 20px 18px 28px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -8px 25px rgba(0,0,0,0.12);
+  }
+
+  .modal-right h2 {
+    margin-bottom: 12px;
+    font-size: clamp(20px, 6vw, 32px);
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  .detail {
+    font-size: clamp(14px, 4vw, 16px);
+    color: #444;
+    line-height: 1.65;
+  }
+
+  .label {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #2D5016;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+  }
+
+  /* ================= CLOSE BUTTON ================= */
+  .close-modal {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    font-size: 22px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  }
+
+  .close-modal:active {
+    transform: scale(0.9);
+  }
+}
+
+  @media (max-width: 900px) {
+
+  /* ================= GRID ================= */
+  .team-grid {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .team-card {
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transform: none; /* disable hover scale on mobile */
+    touch-action: manipulation;
+  }
+
+  /* ================= ALWAYS VISIBLE PANEL ================= */
+  .team-card .team-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.25));
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 0;
+  }
+
+  /* Name & Role - always visible */
+  .team-card .team-info h3,
+  .team-card .team-info p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .team-card .team-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .team-card .team-info p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* ================= FULL OVERLAY ON TAP ================= */
+  .team-card .team-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
     backdrop-filter: blur(12px) saturate(140%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    transition: all 0.5s ease;
   }
 
-  /* Text styling inside overlay */
-  .team-info h3{
-    font-size:1.25rem;
-    margin-bottom:6px;
-    opacity:0;
-    transform: translateY(20px);
-    transition: opacity .45s ease, transform .5s ease;
-  }
-  .team-info p{
-    font-size:.95rem;
-    line-height:1.5;
-    opacity:0;
-    transform: translateY(20px);
-    transition: opacity .45s ease .1s, transform .5s ease .1s;
+  .team-card:active .team-overlay,
+  .team-card:focus .team-overlay {
+    opacity: 1;
   }
 
-  /* Reveal text on overlay activation */
-  .team-card:active .team-info h3,
-  .team-card:focus .team-info h3{
-    opacity:1;
-    transform: translateY(0);
-  }
-  .team-card:active .team-info p,
-  .team-card:focus .team-info p{
-    opacity:1;
-    transform: translateY(0);
+  .team-card .team-overlay h3,
+  .team-card .team-overlay p {
+    color: #fff;
+    margin: 4px 0;
+    text-align: center;
+    line-height: 1.5;
   }
 }
 
-}
 
 /* ================= MODAL BACKDROP ================= */
 .team-modal{
@@ -456,48 +552,22 @@ html,body{
   background: #000;         /* fallback background */
 }
 
-  .modal-right {
-    height: 55%;                        /* fills remaining space */
-    padding: 24px 20px 32px;            /* comfortable spacing */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;  /* smooth iOS scroll */
-    background: #fff;                    /* professional clean look */
-    border-top-left-radius: 20px;        /* rounded top corners */
-    border-top-right-radius: 20px;
-    box-shadow: 0 -8px 25px rgba(0,0,0,0.12); /* subtle depth */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 14px;                           /* consistent spacing between content */
-    transition: all 0.35s ease-in-out;
-  }
 
-  .modal-right h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1.35;
-  }
-
-  .modal-right .detail {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.6;
-  }
-
-  .modal-right .label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #2D5016;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-  }
-
-  .modal-right .typewriter {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #555;
-  }
+.modal-right {
+  height: 55%;                                /* Balanced height relative to image */
+  padding: 24px 20px 32px;                    /* Comfortable spacing for text and actions */
+  overflow-y: auto;                            /* Scroll for long content */
+  -webkit-overflow-scrolling: touch;          /* Smooth scrolling on iOS */
+  background: #ffffff;                         /* Clean, professional background */
+  border-top-left-radius: 24px;               /* Smooth rounded corners */
+  border-top-right-radius: 24px;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.12); /* Subtle shadow for depth */
+  transition: all 0.35s ease-in-out;          /* Smooth transitions when opening */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;                /* Align content naturally from top */
+  gap: 12px;                                  /* Space between elements */
+}
 
 
   .close-modal{
