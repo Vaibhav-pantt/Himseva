@@ -32,22 +32,26 @@ nav {
   align-items: center;
   padding: 0rem 1.8rem;
   
-  width: 100%;              
+  width: 100%; 
+    height: 78px;            
   position: fixed;          
   top: 0;
   left: 0;
   z-index: 9999;
 
   background: rgba(255,255,255,0.2); 
-  backdrop-filter: blur(15px) saturate(180%);
+  backdrop-filter: blur(1px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.3); 
-  border-radius: 1px 5px 15px 15%;  
+  border-radius: 0 0 14px 14px;
+ 
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 
   font-family: 'Inter', sans-serif;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
+
+
 
 nav:hover {
   background: rgba(255,255,255,0.25);
@@ -197,23 +201,43 @@ nav:hover {
 
 /* ================== HAMBURGER ================== */
 .hamburger {
-display: none;                  /* stays hidden on desktop */
-flex-direction: column;         /* stack bars vertically */
-justify-content: space-between; /* even spacing between bars */
-width: 28px;
-height: 22px;
-background: transparent;        /* keeps background clean */
-border: none;                   /* remove unnecessary border */
-cursor: pointer;
-z-index: 1100;
-transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* smoother easing */
+  display: none;                  /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
 
+  width: 40px;                    /* better tap area */
+  height: 40px;
+  padding: 8px;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  z-index: 1100;
+
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.25s ease;
 }
+
+/* Subtle hover polish */
+.hamburger:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Keyboard accessibility */
+.hamburger:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.3);
+  outline-offset: 2px;
+}
+
 
 .hamburger span {
 display: block;
 width: 100%;
-height: 3px;
+height: 4px;
 background-color: #111; /* Slightly softer than pure black */
 border-radius: 6px;     /* Slightly more rounded for modern look */
 box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* subtle depth */
@@ -222,7 +246,7 @@ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* smoother easing */
 }
 
 .hamburger:hover span {
-  box-shadow: 0 0 12px rgb(234, 240, 240), 0 0 24px rgba(18, 17, 18, 0.962);
+  box-shadow: 0 0 12px rgb(199, 221, 221), 0 0 24px rgba(18, 17, 18, 0.962);
   transform: scale(1.05);
 }
 

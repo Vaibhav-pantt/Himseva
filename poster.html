@@ -1,326 +1,331 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हिमालय दर्शन सामाजिक सेवा संस्थान</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<title>Event Gallery – HIMSEVA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-        .poster {
-            width: 100%;
-            max-width: 800px;
-            height: 1120px;
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-            overflow: hidden;
-            position: relative;
-            border: 8px solid #ffbb33;
-        }
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        /* Background Mountain Pattern */
-        .poster::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(180deg, transparent 40%, rgba(255,255,255,0.1) 100%);
-            z-index: 1;
-        }
+/* ================= BODY ================= */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f7f8f7;
+  color: #222;
+  line-height: 1.6;
+}
 
-        .mountain-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 400px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><radialGradient id="g1" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffbb33"/><stop offset="70%" stop-color="%23ff6b35"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><path fill="url(%23g1)" opacity="0.3" d="M0 250 L200 100 L400 200 L600 80 L800 180 L1000 250 L1000 300 L0 300 Z"/><path fill="%23e8f4fd" opacity="0.6" d="M100 240 L300 120 L500 180 L700 90 L900 160 L1000 250 L1000 300 L100 300 Z"/><path fill="%23ffbb33" opacity="0.2" d="M0 260 L150 140 L350 220 L550 110 L750 190 L950 240 L1000 300 L0 300 Z"/></svg>') center/cover;
-            z-index: 0;
-        }
+/* ================= NAVBAR ================= */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+}
 
-        /* Header Section */
-        .header {
-            height: 300px;
-            position: relative;
-            z-index: 2;
-            padding: 40px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(255,187,51,0.9) 0%, rgba(255,107,53,0.9) 100%);
-        }
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
 
-        .logo {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #fff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+.navbar li a {
+  text-decoration: none;
+  color: #2D5016;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
 
-        @keyframes glow {
-            from { text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
-            to { text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 30px rgba(255,215,0,0.8); }
-        }
+/* underline animation */
+.navbar li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #D4A574;
+  transition: width 0.3s ease;
+}
 
-        .tagline {
-            font-size: 1.4rem;
-            color: rgba(255,255,255,0.95);
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
+.navbar li a:hover::after {
+  width: 100%;
+}
 
-        /* Main Content */
-        .main-content {
-            padding: 60px 40px 40px;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
+.navbar li a:hover {
+  color: #D4A574;
+}
 
-        .mission {
-            font-size: 1.6rem;
-            color: #1e293b;
-            font-weight: 700;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  align-items: center;      /* vertically center content */
+  justify-content: center;  /* center horizontally */
+  gap: 1.5rem;              /* space between title and date */
+  padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem);
+  background: 
+    linear-gradient(135deg, rgba(45, 80, 22, 0.9), rgba(212, 165, 116, 0.85)),
+    rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(20px, 6vw, 36px);
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  margin: clamp(2rem, 4vw, 4rem) auto;
+  max-width: 900px;
+  overflow: hidden;
+}
 
-        .services {
-            background: linear-gradient(135deg, #ffbb33, #ff6b35);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+.header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.9) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  position: relative;
+}
 
-        .service-list {
-            list-style: none;
-            margin: 40px 0;
-        }
+.header small {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+}
 
-        .service-list li {
-            font-size: 1.3rem;
-            color: #475569;
-            margin: 18px 0;
-            padding-left: 30px;
-            position: relative;
-            text-align: left;
-            background: linear-gradient(90deg, transparent, rgba(255,187,51,0.1) 50%, transparent);
-            padding: 15px 20px;
-            border-radius: 12px;
-            border-left: 5px solid #ffbb33;
-            transition: all 0.3s ease;
-        }
+.header small:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
 
-        .service-list li:hover {
-            background: linear-gradient(90deg, rgba(255,187,51,0.15), rgba(255,107,53,0.15));
-            transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(255,187,51,0.2);
-        }
+/* Mobile fallback: stack vertically */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(2rem, 8vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+  }
+}
 
-        .service-list li::before {
-            content: '✨';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-        }
 
-        /* Contact Section */
-        .contact-section {
-            background: rgba(255,187,51,0.1);
-            padding: 35px;
-            border-radius: 20px;
-            margin: 40px 0;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,187,51,0.3);
-        }
+/* ================= MEDIA SECTION ================= */
+.media-section {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
 
-        .contact-title {
-            font-size: 1.5rem;
-            color: #b91c1c;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+/* ================= MEDIA ITEM ================= */
+.media-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+  isolation: isolate;
+}
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            font-size: 1.1rem;
-            color: #334155;
-        }
+/* alternate left/right layout */
+.media-item:nth-child(even) {
+  direction: rtl;
+}
+.media-item:nth-child(even) > * {
+  direction: ltr;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
+/* subtle halo behind images */
+.media-item::before {
+  content: "";
+  position: absolute;
+  inset: -40px -20px;
+  background: radial-gradient(circle at 30% 40%, rgba(212,165,116,0.12), transparent 65%);
+  z-index: -1;
+  opacity: 0.6;
+}
 
-        .contact-item:hover {
-            background: white;
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+/* ================= IMAGE ================= */
+.media-item img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
 
-        .contact-icon {
-            font-size: 1.4rem;
-            color: #ff6b35;
-        }
+  /* cloud / organic shape */
+  border-radius: 18% ;
 
-        /* Call to Action */
-        .cta {
-            background: linear-gradient(135deg, #ff6b35, #ffbb33);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            margin: 30px 0;
-            font-size: 1.6rem;
-            font-weight: 700;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(255,107,53,0.4);
-            animation: pulse 2s infinite;
-        }
+  /* subtle shadow for depth */
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.14),
+    0 10px 25px rgba(0,0,0,0.08);
 
-        @keyframes pulse {
-            0% { box-shadow: 0 15px 40px rgba(255,107,53,0.4); }
-            50% { box-shadow: 0 15px 50px rgba(255,107,53,0.6); }
-            100% { box-shadow: 0 15px 40px rgba(255,107,53,0.4); }
-        }
+  transform: translateY(0);
+  transition: transform 0.7s ease, border-radius 0.7s ease, box-shadow 0.7s ease;
+}
 
-        /* Footer */
-        .footer {
-            padding: 30px 40px;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            text-align: center;
-        }
+/* alternate cloud shape for even items */
+.media-item:nth-child(even) img {
+border-radius: 7% ;
 
-        .copyright {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
 
-        .love {
-            color: #ff6b35;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
+}
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
+/* hover effect = gentle float */
 
-        /* Print Styles */
-        @media print {
-            body { background: white; }
-            .poster { box-shadow: none; border: 2px solid #000; }
-        }
+/* ================= TEXT ================= */
+.media-text {
+  position: relative;
+  padding-left: 1.5rem;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .poster { height: auto; aspect-ratio: 9/16; max-width: 400px; }
-            .logo { font-size: 2.2rem; }
-            .services { font-size: 1.8rem; }
-        }
-    </style>
+.media-text h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2D5016;
+}
+
+.media-text p {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 480px;
+  line-height: 1.8;
+}
+
+/* vertical accent line */
+.media-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 3px;
+  height: 48px;
+  background: linear-gradient(to bottom, #D4A574, rgba(212,165,116,0.2), transparent);
+  border-radius: 2px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .media-item {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .media-item::before {
+    inset: -20px;
+  }
+
+  .media-text {
+    padding-left: 0;
+  }
+
+  .media-text::before {
+    display: none;
+  }
+
+  .media-item img {
+    height: 280px;
+    border-radius: 30% 30% 30% 30%;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="poster">
-        <div class="mountain-bg"></div>
-        
-        <div class="header">
-            <div class="logo">हिमालय दर्शन</div>
-            <div class="tagline">सामाजिक सेवा संस्थान</div>
-            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-top: 15px;">
-                सेवा, समर्पण, सद्भावना
-            </p>
-        </div>
 
-        <div class="main-content">
-            <div class="services">आपकी सेवा में समर्पित</div>
-            
-            <p class="mission">
-                हिमालय की गोद में बसे इस पावन संस्थान का मिशन है - 
-                <br>मानवता की सेवा, पर्यावरण संरक्षण और सामाजिक उत्थान
-            </p>
+<div class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#events-section">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="index.html#team">Team</a></li>
+  </ul>
+</div>
 
-            <ul class="service-list">
-                <li>शिक्षा सहायता कार्यक्रम</li>
-                <li>स्वास्थ्य शिविर आयोजन</li>
-                <li>महिला सशक्तिकरण</li>
-                <li>पर्यावरण संरक्षण</li>
-                <li>आपदा राहत कार्य</li>
-                <li>ग्रामीण विकास</li>
-            </ul>
+<div class="header">
+  <h1>Motivation Lecture for 6th–12th Graders – HIMSEVA</h1>
+  <small>📅 December 11, 2025</small>
+</div>
 
-            <div class="cta">
-                🇮🇳 सेवा ही हमारा धर्म है 🇮🇳<br>
-                <span style="font-size: 1.2rem; font-weight: 400;">आज ही जुड़ें - कल बेहतर कल!</span>
-            </div>
+<section class="media-section">
 
-            <div class="contact-section">
-                <div class="contact-title">संपर्क करें</div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">👤</span>
-                        वैभव पंत
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        pantvaibhav350@gmail.com
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        +91 8192919051
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        नैनीताल, उत्तराखंड
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="copyright">
-                © 2025 हिमालय दर्शन सामाजिक सेवा संस्थान | 
-                <span class="love">❤️</span> 
-                सेवा के साथ प्रेम
-            </div>
-        </div>
+  <div class="media-item">
+    <div class="media-text">
+      <h3>Volunteers at the Cleaning Drive</h3>
+      <p>Students and volunteers actively participated in cleanliness and awareness activities, promoting responsibility and teamwork.</p>
     </div>
+    <img src="images/MT image 7.jpg" alt="Event Image">
+  </div>
+
+  <div class="media-item">
+    <div class="media-text">
+      <h3>Community Awareness Session</h3>
+      <p>The session focused on education, discipline, and the importance of social responsibility among students.</p>
+    </div>
+    <img src="images/MT image 7.jpg" alt="Event Image">
+  </div>
+
+  <div class="media-item">
+    <div class="media-text">
+      <h3>Motivational Interaction</h3>
+      <p>Students engaged in meaningful discussions and learned valuable life skills for personal growth.</p>
+    </div>
+    <img src="images/MT image 6.jpg" alt="Event Image">
+  </div>
+
+  <div class="media-item">
+    <div class="media-text">
+      <h3>Prize Distribution Ceremony</h3>
+      <p>Students demonstrating excellent communication and participation were recognized and awarded.</p>
+    </div>
+    <img src="images/MT image 5.jpg" alt="Event Image">
+  </div>
+
+  <div class="media-item">
+    <div class="media-text">
+      <h3>Memorable Group Photograph</h3>
+      <p>A group photograph marking the successful completion of the motivational lecture program.</p>
+    </div>
+    <img src="images/MT image 1.jpg" alt="Event Image">
+  </div>
+
+</section>
+
 </body>
 </html>
