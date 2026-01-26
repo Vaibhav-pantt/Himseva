@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Showcase</title>
+    <style>
+        html, body {
+  overflow-x: hidden;
+}
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; }
+     /* Page Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 16px 32px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 24px;        /* smaller gap for mobile */
+  list-style: none;
+  flex-wrap: wrap;   /* wrap links on smaller screens */
+  padding: 0;
+  margin: 0;
+}
+
+.navbar a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 16px;  /* smaller padding for mobile */
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 14px;      /* slightly smaller on mobile */
+}
+
+.navbar a:hover {
+  background: rgba(4, 109, 166, 0.1);
+  color: var(--accent-blue);
+}
+
+/* -------------------------
+   Responsive Adjustments
+--------------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;        /* More comfortable padding */
+    min-height: 60px;          /* Better touch target */
+  }
+
+  .navbar ul {
+    gap: 4px;                  /* Tighter, more compact */
+    align-items: center;       /* Perfect centering */
+  }
+
+  .navbar a {
+    padding: 12px 18px;        /* Larger touch-friendly padding (44px min height) */
+    font-size: 15px;           /* Better readability */
+    min-height: 44px;          /* iOS accessibility minimum */
+    display: flex;
+    align-items: center;       /* Perfect vertical centering */
+    border-radius: 12px;       /* Slightly softer corners */
+    letter-spacing: -0.02em;   /* Improved legibility */
+  }
+
+  /* Better hover states for touch */
+  .navbar a:active {
+    transform: scale(0.98);
+    background: rgba(0, 102, 255, 0.12);
+  }
+
+  /* Focus states for keyboard navigation */
+  .navbar a:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+  
+  .navbar ul {
+    gap: 3px;
+  }
+  
+  .navbar a {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #0d6efd, #0a58ca);
+  color: #fff;
+  text-align: center;
+  padding: 64px 24px;
+  border-radius: 0 0 28px 28px;
+}
+
+/* Main Heading */
+h1 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Event Details Card */
+.event-details {
+  background: #ffffff;
+  padding: 32px;
+  margin: 0 auto 32px;
+  transform: translateY(-60px);
+  border-radius: 20px;
+  max-width: 1000px;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+  
+       
+        /* Video Section */
+.video-section {
+  text-align: center;
+  margin: 64px 0;
+}
+
+/* Responsive Video Wrapper */
+.video-container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 18px;
+  overflow: hidden;
+
+  /* Visual polish */
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Fallback for older browsers */
+@supports not (aspect-ratio: 16 / 9) {
+  .video-container {
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+}
+
+/* Embedded Video */
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+       
+.photo-gallery-section {
+  margin: 64px 0;
+}
+
+.gallery-heading {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  position: relative; /* IMPORTANT: prevents overlap */
+  z-index: 1;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin: 0;  /* remove top margin to avoid pushing heading */
+}
+
+
+
+      .photo-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+
+  /* Visual polish */
+  background: #111;
+  box-shadow: 
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  /* Smooth interaction */
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.45s ease,
+    filter 0.45s ease;
+}
+
+/* Hover effect */
+.photo-gallery img:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Optional: keyboard accessibility */
+.photo-gallery img:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 4px;
+}
+
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; }
+        .lightbox-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; }
+        .close { color: white; font-size: 40px; position: absolute; top: 20px; right: 30px; cursor: pointer; }
+        @media (max-width: 768px) { h1 { font-size: 2em; } .details-grid { grid-template-columns: 1fr; } }
+
+/* =========================
+   Slider Container
+========================= */
+.slider-container {
+    max-width: 500px;         /* Reduced from 1000px/1200px */
+    width: 85vw;              /* Slightly smaller viewport width */
+    margin: 40px auto;        /* Reduced top/bottom margin */
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;      /* Slightly smaller radius */
+    box-shadow: 0 25px 70px rgba(0,0,0,0.35); /* Softer shadow */
+    background: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+.slider {
+    position: relative;
+    height: 600px;            /* Increased from 500px */
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75) contrast(1.15) saturate(1.1);
+    transition: all 0.5s ease;
+    border-radius: 25px;      /* Match container radius */
+}
+
+.slide.active img {
+    filter: brightness(1) contrast(1.25) saturate(1.2);
+}
+
+.caption {
+    position: absolute;
+    bottom: 40px;             /* More space from bottom */
+    left: 40px;
+    right: 40px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(15px);
+    color: white;
+    padding: 25px 30px;       /* Larger padding */
+    border-radius: 20px;
+    font-size: 1.5em;         /* Bigger text */
+    font-weight: 600;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUpCaption 0.9s forwards 0.4s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.slide.active .caption {
+    animation: slideUpCaption 0.9s forwards;
+}
+
+@keyframes slideUpCaption {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Navigation Arrows - Larger */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(20px);
+    color: white;
+    font-size: 2.8em;         /* Bigger arrows */
+    width: 75px;              /* Larger buttons */
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 3px solid rgba(255,255,255,0.4);
+    user-select: none;
+    z-index: 10;
+    font-weight: bold;
+}
+
+.prev { left: 30px; }
+.next { right: 30px; }
+
+.prev:hover, .next:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* Dots Navigation - Larger */
+.dots {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 18px;              /* Bigger dots */
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 3px solid rgba(255,255,255,0.7);
+}
+
+.dot.active,
+.dot:hover {
+    background: #fff;
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(255,255,255,0.9);
+}
+
+/* Progress Bar - Thicker */
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 6px;              /* Thicker bar */
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4);
+    transition: width 0.1s linear;
+    z-index: 10;
+    border-radius: 0 0 25px 25px;
+}
+
+/* Enhanced Responsive Design – FIXED */
+@media (max-width: 768px) {
+  .slider-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px auto;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .slider {
+    height: 300px;
+  }
+
+  .caption {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    font-size: 1.15em;
+    padding: 16px 20px;
+  }
+
+  .prev,
+  .next {
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+  }
+
+  .prev { left: 12px; }
+  .next { right: 12px; }
+}
+
+/* Container */
+.event-overview {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 24px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #b71c1c; /* classic red accent */
+}
+
+/* Meta info grid */
+.overview-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Individual meta items */
+.meta-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.meta-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.meta-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #b71c1c; /* red accent */
+}
+
+.meta-item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Overview text */
+.overview-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.overview-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-overview {
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .overview-meta {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview-meta {
+    grid-template-columns: 1fr; /* stack meta items */
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .overview-text p {
+    font-size: 1rem;
+  }
+}
+
+
+.user-profile {
+  max-width: 900px;           /* width limit for readability */
+  width: 95%;                  /* responsive */
+  margin: 40px auto;           /* center horizontally */
+  padding: 20px;               /* inner spacing */
+  background-color: #b71c1c;   /* classic deep red */
+  color: #fff;                 /* white text for contrast */
+  border-radius: 8px;           /* subtle rounding */
+  box-sizing: border-box;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2); /* optional shadow for depth */
+}
+
+
+/* --------------------------
+   Profile Header
+--------------------------- */
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;                 /* Slightly smaller gap for balance */
+  margin-bottom: 32px;
+  flex-wrap: wrap;            /* Prevent overflow on smaller screens */
+}
+
+/* --------------------------
+   Avatar
+--------------------------- */
+.profile-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;       /* increased from 120px */
+  height: 160px;      /* increased from 120px */
+  margin: 0 auto 0 0;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff; /* slightly thicker for bigger avatar */
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+
+.avatar-ring {
+  position: absolute;
+  top: -8px;    /* increased from -6px */
+  left: -8px;   /* increased from -6px */
+  right: -8px;  /* increased from -6px */
+  bottom: -8px; /* increased from -6px */
+  border-radius: 50%;
+  border: 2px solid transparent;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+
+/* --------------------------
+   Profile Info
+--------------------------- */
+.profile-info {
+  flex: 1;
+  padding-top: 12px;
+  color: #f8f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-username {
+  font-size: clamp(1.6rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: #f8f5f5;
+  
+  margin-bottom: 12px;
+}
+
+.profile-bio {
+  line-height: 1.6;
+  color: #f8f5f5;
+}
+
+.profile-bio p {
+  margin-bottom: 10px;
+  color: #f8f5f5;
+ 
+  font-size: 1rem;
+}
+
+.profile-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-link {
+  color: #dfe4e8;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 8px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* --------------------------
+   Responsive Design
+--------------------------- */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+   .profile-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .avatar-ring {
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+  }
+
+  .profile-info {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .profile-username {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatar-ring {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+  }
+
+  .profile-username {
+    font-size: 1.3rem;
+  }
+}
+.contact-info-section a {
+  color: #ededf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.contact-info-section a:hover {
+  color: #0c0b0b;
+  text-decoration: underline;
+}
+
+
+    </style>
+</head>
+<body>
+     <div class="navbar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#events-section">Events</a></li>
+        <li><a href="#photo-gallery">Gallery</a></li>
+        <li><a href="index.html#team">Team</a></li>
+    </ul>
+</div>
+
+    <header>
+        <h1>TechFest 2026</h1>
+        <p>India's Premier Tech Conference | Jan 30-31, 2026 | Agra, UP</p>
+    </header>
+
+    <div class="container">
+        <section class="event-details">
+            <h2>Event Details</h2>
+            <div class="details-grid">
+                <div><strong>Date:</strong> January 30-31, 2026</div>
+                <div><strong>Time:</strong> 9:00 AM - 6:00 PM (IST)</div>
+                <div><strong>Venue:</strong> Taj Hotel Convention Center, Agra</div>
+                <div><strong>Tickets:</strong> ₹999 Early Bird (Limited)</div>
+                <div><strong>Speakers:</strong> 20+ Industry Leaders</div>
+                <div><strong>Theme:</strong> AI, Web3 & Future Tech</div>
+            </div>
+        </section>
+
+    
+         <h2 class="gallery-heading">Photo Gallery</h2>
+        <section class="photo-gallery">
+            
+            <!-- Replace src with your image URLs -->
+            <img src="images\\MT image  8 .jpg" alt="Event Photo 1" onclick="openLightbox(this)">
+            <img src="images\MT image 1.jpg" alt="Event Photo 2" onclick="openLightbox(this)">
+            <img src="images\MT image 2.jpg" alt="Event Photo 3" onclick="openLightbox(this)">
+            <img src="images\MT image 3.jpg" alt="Event Photo 4" onclick="openLightbox(this)">
+            <img src="images\MT image 4.jpg" alt="Event Photo 5" onclick="openLightbox(this)">
+            <img src="images\MT image 5.jpg" alt="Event Photo 6" onclick="openLightbox(this)">
+            <img src="images\MT image 6.jpg" alt="Event Photo 6" onclick="openLightbox(this)">
+            <img src="images\MT image 7.jpg" alt="Event Photo 6" onclick="openLightbox(this)">
+
+
+            <div class="slider-container">
+  <div class="slider">
+    <div class="slide active">
+      <img src="images\MT image  8 .jpg" alt="Event 1">
+      <div class="caption">Volunteers at the cleaning drive</div>
+    </div>
+    <div class="slide">
+      <img src="images\MT image 7.jpg" alt="Event 2">
+      <div class="caption">Community awareness activity</div>
+    </div>
+    <div class="slide">
+      <img src="images\MT image 6.jpg" alt="Event 3">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 5.jpg" alt="Event 4">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 4.jpg" alt="Event 5">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 3.jpg" alt="Event 6">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 2.jpg" alt="Event 7">
+      <div class="caption">Group photo after the event</div>
+    </div>
+     <div class="slide">
+      <img src="images\MT image 1.jpg" alt="Event 8">
+      <div class="caption">Group photo after the event</div>
+    </div>
+  </div>
+
+
+  <span class="prev">&#10094;</span>
+  <span class="next">&#10095;</span>
+
+  
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+        </section>
+         <section class="video-section">
+            <h2>Event Highlights</h2>
+            <div class="video-container">
+                <!-- Replace with your YouTube/Vimeo embed URL -->
+              <iframe
+  src="https://www.youtube.com/embed/SQwsls8Nxqc"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+   </div>
+        </section>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" alt="Expanded Photo">
+    </div>
+
+   <section class="event-overview">
+  <h2 class="section-title">📌 Event Overview</h2>
+
+
+    <div class="overview-meta">
+      <div class="meta-item">
+        <span class="meta-icon">📅</span>
+        <div>
+          <h4>Date</h4>
+          <p>11 December 2025</p>
+        </div>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-icon">📍</span>
+        <div>
+          <h4>Venue</h4>
+          <p>Lakshmi Shiksha Niketan<br><small>Danya, Almora</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="overview-text">
+      <p>
+        Himalaya Darshan Social Service Organization organized a motivational lecture
+        for students of Classes 6 to 12, focusing on personal growth, improving
+        concentration, understanding the true purpose of education, and recognizing
+        individual responsibilities toward culture and society.
+      </p>
+
+      <p>
+        The session aimed to inspire students to build a positive mindset, develop
+        discipline, set meaningful goals, and contribute positively to their nation
+        and community.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="user-profile">
+  <div class="profile-header">
+    
+    <!-- Avatar -->
+    <div class="profile-avatar">
+      <img src="images/bipin pandey.jpg" alt="Bipin Chandra Pandey" class="avatar-img">
+      <div class="avatar-ring"></div>
+    </div>
+    
+    <!-- Profile Info -->
+    <div class="profile-info">
+      <h1 class="profile-username">Bipin Chandra Pandey</h1>
+      
+      <div class="profile-bio">
+        <p><strong>Founder & Event Coordinator</strong> – Himalaya Darshan Social Service Organization</p>
+        <p>Empowering youth through education, motivation & community service in Almora & beyond.</p>
+        
+        <!-- Contact Info -->
+       <div class="contact-info-section">
+  <h2>Contact For More Information</h2>
+  <p>📞 <a href="tel:+919149677383">+91 91496 77383</a></p>
+  <p>📧 <a href="mailto:bipinpuja27@gmail.com">bipinpuja27@gmail.com</a></p>
+</div>
+    
+
+        <!-- Website Link -->
+        <a href="https://himalayadarshan.org" class="profile-link" target="_blank">himalayadarshan.org</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightbox.style.display = 'block';
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Smooth scroll for anchor links (if added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+
+
+    
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let autoSlideInterval;
+        let progressInterval;
+
+        // Initialize dots
+        function createDots() {
+            const dotsContainer = document.getElementById('dots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Update dots
+        function updateDots(index) {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+            updateDots(index);
+            resetProgress();
+        }
+
+        // Change slide
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        // Auto slide
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 3500);
+        }
+
+        // Progress bar
+        function startProgress() {
+            const progress = document.getElementById('progress');
+            let width = 0;
+            progressInterval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(progressInterval);
+                } else {
+                    width += 2;
+                    progress.style.width = width + '%';
+                }
+            }, 100);
+        }
+
+        function resetProgress() {
+            clearInterval(progressInterval);
+            document.getElementById('progress').style.width = '0%';
+            startProgress();
+        }
+
+        // Pause on hover
+        const container = document.querySelector('.slider-container');
+        container.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+            clearInterval(progressInterval);
+        });
+
+        container.addEventListener('mouseleave', () => {
+            startAutoSlide();
+            resetProgress();
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        container.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        });
+
+        container.addEventListener('touchend', e => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) changeSlide(1);
+            if (endX - startX > 50) changeSlide(-1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        createDots();
+        startAutoSlide();
+        startProgress();
+
+    </script>
+</body>
+</html>
